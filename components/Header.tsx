@@ -129,7 +129,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white hover:text-white/70 transition-colors p-2 z-50"
+            className={`lg:hidden text-white hover:text-white/70 transition-colors p-2 relative ${isMobileMenuOpen ? 'z-[110]' : 'z-50'}`}
             aria-label="Toggle menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
@@ -143,7 +143,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 z-40 bg-black transition-transform duration-500 ${
+        className={`lg:hidden fixed inset-0 z-[100] bg-black transition-transform duration-500 ease-in-out ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

@@ -15,41 +15,41 @@ export default function ReservationsPage() {
           <div className="inline-block px-6 py-2 bg-warm-brown text-white text-xs tracking-[0.3em] mb-6 font-bold">
             SECURE YOUR TABLE
           </div>
-          <h1 className="font-display text-6xl md:text-8xl tracking-tight mb-6 font-black text-charcoal">
+          <h1 className="font-display text-4xl md:text-8xl tracking-tight mb-6 font-black text-charcoal">
             RESERVATIONS
           </h1>
           <div className="w-32 h-1 bg-warm-brown mx-auto mb-6"></div>
-          <p className="text-charcoal/70 text-xl tracking-wide font-medium max-w-2xl mx-auto">
+          <p className="text-charcoal/70 text-base md:text-xl tracking-wide font-medium max-w-2xl mx-auto px-4">
             Book Your Table at Banff's Best Pizza
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-16">
           {/* OpenTable Integration */}
-          <section className="bg-black text-white p-12 rounded-lg text-center">
-            <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-6 font-black">
+          <section className="bg-black text-white p-6 md:p-12 rounded-lg text-center">
+            <h2 className="font-display text-2xl md:text-4xl tracking-tight mb-4 md:mb-6 font-black">
               BOOK ONLINE NOW
             </h2>
-            <div className="w-24 h-1 bg-white mx-auto mb-8"></div>
-            <p className="text-white/80 mb-8 text-lg">
+            <div className="w-24 h-1 bg-white mx-auto mb-6 md:mb-8"></div>
+            <p className="text-white/80 mb-6 md:mb-8 text-base md:text-lg">
               Reserve your table instantly through OpenTable
             </p>
             <a
               href="https://www.opentable.com/r/bear-street-tavern-banff"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-black hover:bg-white/90 px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
+              className="inline-block bg-white text-black hover:bg-white/90 px-6 md:px-12 py-3 md:py-4 font-bold text-xs md:text-sm tracking-wider md:tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
             >
               RESERVE ON OPENTABLE
             </a>
-            <p className="text-white/60 text-sm mt-6">
+            <p className="text-white/60 text-xs md:text-sm mt-4 md:mt-6">
               Instant confirmation • Easy to modify • No fees
             </p>
           </section>
 
           {/* Contact Information */}
-          <section className="bg-gray-50 border-2 border-gray-200 p-10 rounded-lg">
-            <h2 className="font-display text-2xl md:text-3xl tracking-tight mb-6 font-bold text-center text-charcoal">
+          <section className="bg-gray-50 border-2 border-gray-200 p-6 md:p-10 rounded-lg">
+            <h2 className="font-display text-xl md:text-3xl tracking-tight mb-6 font-bold text-center text-charcoal">
               PREFER TO CALL?
             </h2>
             <div className="text-center space-y-4">
@@ -81,16 +81,16 @@ export default function ReservationsPage() {
 
           {/* Daily Specials */}
           <section>
-            <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-8 text-center font-black text-charcoal">
+            <h2 className="font-display text-2xl md:text-4xl tracking-tight mb-6 md:mb-8 text-center font-black text-charcoal">
               DAILY SPECIALS
             </h2>
-            <p className="text-center text-black/60 mb-10 italic">
+            <p className="text-center text-black/60 mb-6 md:mb-10 text-xs md:text-sm italic px-4">
               Excludes holidays and extended weekends • Select pizzas and calzones only
             </p>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
               {/* Sunday */}
-              <div className="bg-gray-50 border-2 border-gray-200 p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-xl tracking-wider mb-3 text-charcoal">SUNDAY</h3>
+              <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">SUNDAY</h3>
                 <p className="text-black/70 mb-4 text-sm">5:00 PM onwards</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -106,15 +106,15 @@ export default function ReservationsPage() {
                   href="https://www.opentable.com/r/bear-street-tavern-banff"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-6 bg-black text-white hover:bg-black/80 px-6 py-2 font-bold text-sm tracking-wider transition-all"
+                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
                 >
                   BOOK NOW
                 </a>
               </div>
 
               {/* Monday */}
-              <div className="bg-gray-50 border-2 border-gray-200 p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-xl tracking-wider mb-3 text-charcoal">MONDAY</h3>
+              <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">MONDAY</h3>
                 <p className="text-black/70 mb-4 text-sm">5:00 PM onwards</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -126,15 +126,15 @@ export default function ReservationsPage() {
                   href="https://www.opentable.com/r/bear-street-tavern-banff"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-6 bg-black text-white hover:bg-black/80 px-6 py-2 font-bold text-sm tracking-wider transition-all"
+                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
                 >
                   BOOK NOW
                 </a>
               </div>
 
               {/* Tuesday */}
-              <div className="bg-gray-50 border-2 border-gray-200 p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-xl tracking-wider mb-3 text-charcoal">TUESDAY</h3>
+              <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">TUESDAY</h3>
                 <p className="text-black/70 mb-4 text-sm">All day</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -150,15 +150,15 @@ export default function ReservationsPage() {
                   href="https://www.opentable.com/r/bear-street-tavern-banff"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-6 bg-black text-white hover:bg-black/80 px-6 py-2 font-bold text-sm tracking-wider transition-all"
+                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
                 >
                   BOOK NOW
                 </a>
               </div>
 
               {/* Wednesday & Thursday */}
-              <div className="bg-gray-50 border-2 border-gray-200 p-8 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-xl tracking-wider mb-3 text-charcoal">WEDNESDAY & THURSDAY</h3>
+              <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
+                <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">WEDNESDAY & THURSDAY</h3>
                 <p className="text-black/70 mb-4 text-sm">All day</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
@@ -170,7 +170,7 @@ export default function ReservationsPage() {
                   href="https://www.opentable.com/r/bear-street-tavern-banff"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-6 bg-black text-white hover:bg-black/80 px-6 py-2 font-bold text-sm tracking-wider transition-all"
+                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
                 >
                   BOOK NOW
                 </a>
@@ -179,26 +179,26 @@ export default function ReservationsPage() {
           </section>
 
           {/* Important Information */}
-          <section className="bg-black text-white p-10 rounded-lg">
-            <h2 className="font-display text-2xl md:text-3xl tracking-tight mb-6 font-bold text-center">
+          <section className="bg-black text-white p-6 md:p-10 rounded-lg">
+            <h2 className="font-display text-xl md:text-3xl tracking-tight mb-6 font-bold text-center">
               IMPORTANT INFORMATION
             </h2>
             <div className="space-y-4 max-w-2xl mx-auto">
-              <div className="border-l-4 border-white/30 pl-6">
-                <h3 className="font-bold mb-2">Group Size Policy</h3>
-                <p className="text-white/80">
+              <div className="border-l-4 border-white/30 pl-4 md:pl-6">
+                <h3 className="font-bold mb-2 text-sm md:text-base">Group Size Policy</h3>
+                <p className="text-white/80 text-sm md:text-base">
                   We do not accept large group events of 17 or more guests. For group bookings, please contact other Banff Hospitality Collective venues.
                 </p>
               </div>
-              <div className="border-l-4 border-white/30 pl-6">
-                <h3 className="font-bold mb-2">Dog-Friendly Patio</h3>
-                <p className="text-white/80">
+              <div className="border-l-4 border-white/30 pl-4 md:pl-6">
+                <h3 className="font-bold mb-2 text-sm md:text-base">Dog-Friendly Patio</h3>
+                <p className="text-white/80 text-sm md:text-base">
                   Our year-round heated patio with fire tables welcomes your furry friends! We offer a special canine menu and dog-friendly beer. Please note: the patio is not enclosed and is subject to the elements.
                 </p>
               </div>
-              <div className="border-l-4 border-white/30 pl-6">
-                <h3 className="font-bold mb-2">Special Event Policies</h3>
-                <p className="text-white/80">
+              <div className="border-l-4 border-white/30 pl-4 md:pl-6">
+                <h3 className="font-bold mb-2 text-sm md:text-base">Special Event Policies</h3>
+                <p className="text-white/80 text-sm md:text-base">
                   Daily specials exclude holidays and extended weekends. Selected pizzas and calzones only.
                 </p>
               </div>

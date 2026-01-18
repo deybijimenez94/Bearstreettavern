@@ -116,8 +116,33 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+        {/* Mobile: Horizontal Scroll Gallery */}
+        <div className="md:hidden mb-16">
+          <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
+            <div className="flex gap-4 pb-4">
+              {filteredImages.map((image, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(image.src)}
+                  className="relative w-40 h-40 flex-shrink-0 overflow-hidden cursor-pointer bg-gray-200 rounded-lg shadow-lg active:scale-95 transition-transform"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="text-center text-sm text-charcoal/60 mt-2">
+            Swipe para ver más →
+          </p>
+        </div>
+
+        {/* Desktop: Gallery Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
           {filteredImages.map((image, index) => (
             <div
               key={index}
