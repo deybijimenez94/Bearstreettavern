@@ -3,8 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Header() {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -53,12 +56,12 @@ export default function Header() {
   }, [lastScrollY]);
 
   const navLinks = [
-    { href: '/', label: 'HOME' },
-    { href: '/menu', label: 'MENU' },
-    { href: '/about', label: 'ABOUT' },
-    { href: '/reservations', label: 'RESERVATIONS' },
-    { href: '/gallery', label: 'GALLERY' },
-    { href: '/contact', label: 'CONTACT' },
+    { href: '/', label: 'header.home' },
+    { href: '/menu', label: 'header.menu' },
+    { href: '/about', label: 'header.about' },
+    { href: '/reservations', label: 'header.reservations' },
+    { href: '/gallery', label: 'header.gallery' },
+    { href: '/contact', label: 'header.contact' },
   ];
 
   return (
@@ -106,13 +109,14 @@ export default function Header() {
                 href={link.href}
                 className="text-white/80 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
               >
-                {link.label}
+                {t(link.label)}
               </Link>
             ))}
           </div>
 
           {/* Right Side Actions */}
           <div className="hidden lg:flex items-center space-x-4">
+            <LanguageSwitcher />
             <a
               href="tel:4037622021"
               className="text-white/80 hover:text-white text-sm font-medium transition-colors tracking-wide"
@@ -122,7 +126,7 @@ export default function Header() {
               href="/reservations"
               className="bg-white text-black hover:bg-white/90 px-6 py-2.5 font-bold text-sm tracking-wider transition-all border border-white hover:shadow-lg hover:shadow-white/20"
             >
-              BOOK NOW
+              {t('header.bookNow')}
             </Link>
           </div>
 
@@ -160,6 +164,11 @@ export default function Header() {
             </div>
           </div>
 
+          {/* Language Switcher Mobile */}
+          <div className="mb-4">
+            <LanguageSwitcher />
+          </div>
+
           {/* Navigation Links */}
           <nav className="flex flex-col items-center space-y-6 w-full max-w-md">
             {navLinks.map((link, index) => (
@@ -173,7 +182,7 @@ export default function Header() {
                   animation: isMobileMenuOpen ? 'fadeInUp 0.5s ease-out forwards' : 'none'
                 }}
               >
-                {link.label}
+                {t(link.label)}
               </Link>
             ))}
           </nav>
@@ -194,7 +203,7 @@ export default function Header() {
               className="block bg-white text-black hover:bg-white/90 px-12 py-5 font-bold tracking-[0.25em] transition-all text-center border-2 border-white hover:scale-105 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              BOOK NOW
+              {t('header.bookNow')}
             </Link>
           </div>
 
