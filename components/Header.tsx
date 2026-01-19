@@ -145,6 +145,14 @@ export default function Header() {
         </div>
       </nav>
 
+      {/* Mobile Menu Backdrop - Black Overlay */}
+      <div
+        className={`lg:hidden fixed inset-0 bg-black z-[90] transition-opacity duration-500 ${
+          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      ></div>
+
       {/* Mobile Menu Overlay - Compact Right-Side Menu */}
       <div
         className={`lg:hidden fixed inset-y-0 right-0 z-[100] w-72 bg-black transition-transform duration-500 ease-in-out shadow-2xl ${

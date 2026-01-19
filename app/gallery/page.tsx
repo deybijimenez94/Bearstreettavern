@@ -124,7 +124,7 @@ export default function GalleryPage() {
                 <div
                   key={index}
                   onClick={() => setSelectedImage(image.src)}
-                  className="relative w-40 h-40 flex-shrink-0 overflow-hidden cursor-pointer bg-gray-200 rounded-lg shadow-lg active:scale-95 transition-transform"
+                  className="relative w-56 h-56 flex-shrink-0 overflow-hidden cursor-pointer bg-gray-200 rounded-lg shadow-lg active:scale-95 transition-transform"
                 >
                   <Image
                     src={image.src}
