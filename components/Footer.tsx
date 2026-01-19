@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
@@ -15,7 +17,7 @@ export default function Footer() {
 
     // Simulate newsletter signup
     setTimeout(() => {
-      setMessage('SUBSCRIBED SUCCESSFULLY');
+      setMessage(t('footer.subscribed'));
       setEmail('');
       setIsSubmitting(false);
       setTimeout(() => setMessage(''), 3000);
@@ -41,10 +43,10 @@ export default function Footer() {
           <div className="container mx-auto px-4 lg:px-8 py-8 md:py-12">
             <div className="max-w-2xl mx-auto text-center">
               <h3 className="font-display text-2xl md:text-4xl tracking-[0.2em] mb-2 md:mb-3 font-bold">
-                STAY UPDATED
+                {t('footer.newsletter')}
               </h3>
               <p className="text-white/60 mb-4 md:mb-6 tracking-wide text-xs md:text-sm">
-                GET EXCLUSIVE DEALS & SPECIAL OFFERS
+                {t('footer.newsletterDesc')}
               </p>
               <form
                 onSubmit={handleNewsletterSubmit}
@@ -54,7 +56,7 @@ export default function Footer() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="YOUR EMAIL"
+                  placeholder={t('footer.email')}
                   required
                   className="flex-1 px-4 md:px-6 py-2 md:py-3 bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white transition-all tracking-wide text-xs md:text-sm"
                 />
@@ -63,7 +65,7 @@ export default function Footer() {
                   disabled={isSubmitting}
                   className="bg-white text-black hover:bg-white/90 px-6 md:px-8 py-2 md:py-3 font-bold tracking-wider transition-all disabled:opacity-50 border border-white text-xs md:text-sm"
                 >
-                  {isSubmitting ? 'SENDING...' : 'SUBSCRIBE'}
+                  {isSubmitting ? t('footer.subscribing') : t('footer.subscribe')}
                 </button>
               </form>
               {message && (
@@ -99,7 +101,7 @@ export default function Footer() {
               </Link>
               <div className="inline-block border border-white/20 px-3 py-1.5">
                 <p className="text-xs text-white/80 tracking-wider">
-                  BANFF HOSPITALITY COLLECTIVE
+                  {t('footer.collective')}
                 </p>
               </div>
             </div>
@@ -107,23 +109,23 @@ export default function Footer() {
             {/* Column 2: Quick Links */}
             <div className="text-left">
               <h4 className="font-display text-xs md:text-sm tracking-[0.3em] mb-3 md:mb-4 font-bold">
-                MENU
+                {t('footer.menu')}
               </h4>
               <ul className="space-y-1.5 md:space-y-2">
                 {[
-                  { href: '/', label: 'HOME' },
-                  { href: '/menu', label: 'MENU' },
-                  { href: '/order-online', label: 'ORDER ONLINE' },
-                  { href: '/reservations', label: 'RESERVATIONS' },
-                  { href: '/gift-cards', label: 'GIFT CARDS' },
-                  { href: '/specials', label: 'SPECIALS' },
+                  { href: '/', label: 'footer.home' },
+                  { href: '/menu', label: 'footer.menuLink' },
+                  { href: '/order-online', label: 'footer.orderOnline' },
+                  { href: '/reservations', label: 'footer.reservations' },
+                  { href: '/gift-cards', label: 'footer.giftCards' },
+                  { href: '/specials', label: 'footer.specials' },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       className="text-white/60 hover:text-white transition-colors text-[10px] md:text-xs tracking-wider inline-block"
                     >
-                      {link.label}
+                      {t(link.label)}
                     </Link>
                   </li>
                 ))}
@@ -133,16 +135,16 @@ export default function Footer() {
             {/* Column 3: Contact Info */}
             <div className="text-left">
               <h4 className="font-display text-xs md:text-sm tracking-[0.3em] mb-3 md:mb-4 font-bold">
-                CONTACT
+                {t('footer.contact')}
               </h4>
               <ul className="space-y-2 md:space-y-3 text-xs">
                 <li>
-                  <p className="text-white/40 text-[10px] md:text-xs tracking-wider mb-1">ADDRESS</p>
-                  <p className="text-white/80 tracking-wide text-[10px] md:text-xs">211 Bear Street</p>
-                  <p className="text-white/80 tracking-wide text-[10px] md:text-xs">Banff, AB</p>
+                  <p className="text-white/40 text-[10px] md:text-xs tracking-wider mb-1">{t('footer.address')}</p>
+                  <p className="text-white/80 tracking-wide text-[10px] md:text-xs">{t('footer.address1')}</p>
+                  <p className="text-white/80 tracking-wide text-[10px] md:text-xs">{t('footer.address2')}</p>
                 </li>
                 <li>
-                  <p className="text-white/40 text-[10px] md:text-xs tracking-wider mb-1">PHONE</p>
+                  <p className="text-white/40 text-[10px] md:text-xs tracking-wider mb-1">{t('footer.phone')}</p>
                   <a
                     href="tel:4037622021"
                     className="text-white/80 hover:text-white transition-colors tracking-wide inline-block text-[10px] md:text-xs"
@@ -151,8 +153,8 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <p className="text-white/40 text-[10px] md:text-xs tracking-wider mb-1">HOURS</p>
-                  <p className="text-white/80 tracking-wide text-[10px] md:text-xs">Daily 11:30AM-9PM</p>
+                  <p className="text-white/40 text-[10px] md:text-xs tracking-wider mb-1">{t('footer.hours')}</p>
+                  <p className="text-white/80 tracking-wide text-[10px] md:text-xs">{t('footer.hoursValue')}</p>
                 </li>
               </ul>
             </div>
@@ -160,7 +162,7 @@ export default function Footer() {
             {/* Column 4: Social */}
             <div className="col-span-2 lg:col-span-1 text-center lg:text-left">
               <h4 className="font-display text-xs md:text-sm tracking-[0.3em] mb-3 md:mb-4 font-bold">
-                FOLLOW US
+                {t('footer.followUs')}
               </h4>
               <div className="flex space-x-2 md:space-x-3 mb-4 md:mb-6 justify-center lg:justify-start">
                 <a
@@ -192,12 +194,12 @@ export default function Footer() {
                 </a>
               </div>
               <div className="hidden md:block">
-                <p className="text-white/40 text-xs tracking-wider mb-2">EMAIL</p>
+                <p className="text-white/40 text-xs tracking-wider mb-2">{t('footer.emailLabel')}</p>
                 <a
                   href="mailto:info@bearstreettavern.ca"
                   className="text-white/80 hover:text-white transition-colors tracking-wide text-xs break-all inline-block"
                 >
-                  INFO@BEARSTREETTAVERN.CA
+                  {t('footer.emailAddress')}
                 </a>
               </div>
             </div>
@@ -209,26 +211,26 @@ export default function Footer() {
           <div className="container mx-auto px-4 lg:px-8 py-3 md:py-4">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
               <p className="text-white/40 text-[10px] md:text-xs tracking-wider text-center md:text-left">
-                © {new Date().getFullYear()} BEAR STREET TAVERN
+                © {new Date().getFullYear()} {t('footer.copyright')}
               </p>
               <div className="flex space-x-3 md:space-x-4 text-[10px] md:text-xs">
                 <Link
                   href="/accessibility"
                   className="text-white/40 hover:text-white transition-colors tracking-wider"
                 >
-                  ACCESSIBILITY
+                  {t('footer.accessibility')}
                 </Link>
                 <Link
                   href="/privacy"
                   className="text-white/40 hover:text-white transition-colors tracking-wider"
                 >
-                  PRIVACY
+                  {t('footer.privacy')}
                 </Link>
                 <Link
                   href="/terms"
                   className="text-white/40 hover:text-white transition-colors tracking-wider"
                 >
-                  TERMS
+                  {t('footer.terms')}
                 </Link>
               </div>
             </div>

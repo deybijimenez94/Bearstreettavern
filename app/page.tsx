@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
+  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pizzaSlide, setPizzaSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
@@ -18,9 +20,9 @@ export default function Home() {
   ];
 
   const pizzas = [
-    { img: '/images/Food/Food1.jpg', name: 'THE GODFATHER', desc: 'Italian sausage, prosciutto, confit garlic, truffle oil', price: '$24.99', badge: 'AWARD-WINNING' },
-    { img: '/images/Food/BigBird.jpg', name: 'BIG BIRD', desc: 'Spinach, bacon, red onion, goat cheese, pesto chicken', price: '$23.99', badge: 'POPULAR' },
-    { img: '/images/Food/Food3.jpg', name: 'MARGARITA', desc: 'Italian sauce, four cheese, fresh basil, sea salt', price: '$19.99', badge: 'VEGETARIAN' }
+    { img: '/images/Food/Food1.jpg', name: 'home.pizzas.godfather', desc: 'home.pizzas.godfatherDesc', price: '$24.99', badge: 'home.pizzas.awardWinning' },
+    { img: '/images/Food/BigBird.jpg', name: 'home.pizzas.bigBird', desc: 'home.pizzas.bigBirdDesc', price: '$23.99', badge: 'home.pizzas.popular' },
+    { img: '/images/Food/Food3.jpg', name: 'home.pizzas.margarita', desc: 'home.pizzas.margaritaDesc', price: '$19.99', badge: 'home.pizzas.vegetarian' }
   ];
 
   useEffect(() => {
@@ -93,21 +95,21 @@ export default function Home() {
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
           {/* Main Headline */}
           <p className="text-white/70 text-sm md:text-base tracking-[0.3em] mb-6 animate-fade-in font-medium">
-            BANFF, ALBERTA
+            {t('home.hero.location')}
           </p>
           <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white mb-4 md:mb-6 tracking-[0.1em] md:tracking-[0.15em] animate-fade-in-up font-black">
-            BEAR STREET
+            {t('home.hero.bearStreet')}
           </h1>
           <div className="w-24 md:w-32 h-0.5 bg-white/70 mx-auto mb-4 md:mb-6 animate-fade-in animation-delay-200"></div>
           <h2 className="font-display text-3xl md:text-4xl lg:text-6xl text-white/95 mb-8 md:mb-12 animate-fade-in-up animation-delay-200 font-light tracking-widest">
-            TAVERN
+            {t('home.hero.tavern')}
           </h2>
 
           {/* Badge */}
           <div className="inline-block mb-16 md:mb-20 animate-fade-in animation-delay-400">
             <div className="border-2 border-white/50 px-6 md:px-10 py-3 md:py-4 bg-white/5 backdrop-blur-sm">
               <p className="text-white font-bold text-xs md:text-sm tracking-[0.25em] md:tracking-[0.35em]">
-                AS SEEN ON "YOU GOTTA EAT HERE"
+                {t('home.hero.badge')}
               </p>
             </div>
           </div>
@@ -126,9 +128,9 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-8 md:mb-20">
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-white mb-3 md:mb-6 tracking-tight font-black">
-              SIGNATURE PIZZAS
+              {t('home.pizzas.title')}
             </h2>
-            <p className="text-white/60 text-sm md:text-base tracking-wide font-medium">Oven-Baked Perfection</p>
+            <p className="text-white/60 text-sm md:text-base tracking-wide font-medium">{t('home.pizzas.subtitle')}</p>
           </div>
 
           {/* Desktop: Grid */}
@@ -145,14 +147,14 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-1 text-xs tracking-wider font-bold">{pizza.badge}</span>
+                    <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-1 text-xs tracking-wider font-bold">{t(pizza.badge)}</span>
                   </div>
                 </div>
                 <div className="p-8">
-                  <h3 className="font-display text-2xl md:text-3xl text-white mb-3 tracking-wider">{pizza.name}</h3>
+                  <h3 className="font-display text-2xl md:text-3xl text-white mb-3 tracking-wider">{t(pizza.name)}</h3>
                   <div className="w-16 h-0.5 bg-white/30 mb-4"></div>
                   <p className="text-white/60 mb-6 tracking-wide leading-relaxed text-sm">
-                    {pizza.desc}
+                    {t(pizza.desc)}
                   </p>
                   <p className="text-white font-bold text-xl tracking-wider">{pizza.price}</p>
                 </div>
@@ -181,14 +183,14 @@ export default function Home() {
                         />
                         <div className="absolute inset-0 bg-black/30"></div>
                         <div className="absolute top-3 left-3">
-                          <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 text-xs tracking-wider font-bold">{pizza.badge}</span>
+                          <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 text-xs tracking-wider font-bold">{t(pizza.badge)}</span>
                         </div>
                       </div>
                       <div className="p-5">
-                        <h3 className="font-display text-xl text-white mb-2 tracking-wider">{pizza.name}</h3>
+                        <h3 className="font-display text-xl text-white mb-2 tracking-wider">{t(pizza.name)}</h3>
                         <div className="w-12 h-0.5 bg-white/30 mb-3"></div>
                         <p className="text-white/60 mb-4 tracking-wide text-xs leading-relaxed">
-                          {pizza.desc}
+                          {t(pizza.desc)}
                         </p>
                         <p className="text-white font-bold text-lg tracking-wider">{pizza.price}</p>
                       </div>
@@ -216,7 +218,7 @@ export default function Home() {
               href="/menu"
               className="inline-block bg-white text-black hover:bg-white/90 px-10 md:px-12 py-4 md:py-5 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white"
             >
-              FULL MENU
+              {t('home.pizzas.viewMenu')}
             </Link>
           </div>
         </div>
@@ -227,7 +229,7 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 md:mb-6 font-black text-charcoal">
-              WHAT MAKES US SPECIAL
+              {t('home.highlights.title')}
             </h2>
             <div className="w-24 h-1 bg-warm-brown mx-auto"></div>
           </div>
@@ -247,11 +249,11 @@ export default function Home() {
               </div>
               <div className="bg-white p-8 text-center">
                 <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-charcoal">
-                  100% PET-FRIENDLY
+                  {t('home.highlights.petFriendly')}
                 </h3>
                 <div className="w-16 h-1 bg-warm-brown mx-auto mb-5"></div>
                 <p className="text-black/80 leading-relaxed text-sm">
-                  Year-round heated patio with cozy firepits. We have a <strong>special menu for dogs and dog-friendly beer</strong> so your furry friends can enjoy the experience too!
+                  {t('home.highlights.petFriendlyDesc')}
                 </p>
               </div>
             </div>
@@ -269,16 +271,16 @@ export default function Home() {
               </div>
               <div className="bg-white p-8 text-center">
                 <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-charcoal">
-                  CRAFT BEERS & DRINKS
+                  {t('home.highlights.craftBeers')}
                 </h3>
                 <div className="w-16 h-1 bg-warm-brown mx-auto mb-5"></div>
                 <p className="text-black/80 leading-relaxed text-sm">
-                  Featuring <strong>exclusive brews from Three Bears Brewery</strong> and a full selection of craft beers, cocktails, and beverages to complement your meal.
+                  {t('home.highlights.craftBeersDesc')}
                 </p>
               </div>
             </div>
 
-            {/* Highlight 3 - Especiales */}
+            {/* Highlight 3 - Crazy Specials */}
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all">
               <div className="relative h-80 overflow-hidden">
                 {specialsImages.map((image, index) => (
@@ -299,18 +301,17 @@ export default function Home() {
               </div>
               <div className="bg-white p-8 text-center">
                 <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-charcoal">
-                  ESPECIALES DE LOCURA
+                  {t('home.highlights.crazySpecials')}
                 </h3>
                 <div className="w-16 h-1 bg-warm-brown mx-auto mb-5"></div>
                 <p className="text-black/80 leading-relaxed text-sm mb-6">
-                  <strong className="text-2xl block mb-2 text-warm-brown">50% OFF</strong>
-                  Select pizzas every Sunday and Monday from 5pm
+                  {t('home.highlights.crazySpecialsDesc')}
                 </p>
                 <Link
                   href="/specials"
                   className="inline-block bg-black text-white hover:bg-black/90 px-8 py-3 font-bold text-xs tracking-wider transition-all rounded"
                 >
-                  VIEW SPECIALS
+                  {t('home.highlights.viewSpecials')}
                 </Link>
                 <div className="flex justify-center gap-2 mt-5">
                   {specialsImages.map((_, index) => (
@@ -338,9 +339,9 @@ export default function Home() {
             >
               <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                 {[
-                  { img: '/images/Pets/Pet1.jpg', title: '100% PET-FRIENDLY', desc: 'Year-round heated patio with special menu for dogs!' },
-                  { img: '/images/Drinks/Drink1.jpg', title: 'CRAFT BEERS & DRINKS', desc: 'Exclusive brews from Three Bears Brewery' },
-                  { img: '/images/especiales/Monday.jpg', title: 'ESPECIALES DE LOCURA', desc: '50% OFF select pizzas Sun & Mon from 5pm' }
+                  { img: '/images/Pets/Pet1.jpg', title: 'home.highlights.petFriendly', desc: 'home.highlights.petFriendlyDesc' },
+                  { img: '/images/Drinks/Drink1.jpg', title: 'home.highlights.craftBeers', desc: 'home.highlights.craftBeersDesc' },
+                  { img: '/images/especiales/Monday.jpg', title: 'home.highlights.crazySpecials', desc: 'home.highlights.crazySpecialsDesc' }
                 ].map((item, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-2">
                     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -354,9 +355,9 @@ export default function Home() {
                       </div>
                       <div className="p-6 text-center">
                         <h3 className="font-display text-lg tracking-tight mb-2 font-bold text-charcoal">
-                          {item.title}
+                          {t(item.title)}
                         </h3>
-                        <p className="text-black/70 text-sm leading-relaxed">{item.desc}</p>
+                        <p className="text-black/70 text-sm leading-relaxed">{t(item.desc)}</p>
                       </div>
                     </div>
                   </div>
@@ -384,9 +385,9 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-white mb-4 md:mb-6 tracking-tight font-black">
-              SHARE YOUR MOMENTS
+              {t('home.instagram.title')}
             </h2>
-            <p className="text-white/60 text-xs md:text-sm lg:text-base tracking-wide font-medium">Tag us @bearstreettavern in your photos</p>
+            <p className="text-white/60 text-xs md:text-sm lg:text-base tracking-wide font-medium">{t('home.instagram.subtitle')}</p>
           </div>
 
           {/* Marquee Gallery */}
@@ -443,7 +444,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-block bg-white text-black hover:bg-white/90 px-12 py-5 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white"
             >
-              FOLLOW US
+              {t('home.instagram.followUs')}
             </a>
           </div>
         </div>
@@ -455,7 +456,7 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 md:mb-6 font-black text-charcoal">
-                OUR STORY
+                {t('home.about.title')}
               </h2>
               <div className="w-24 h-1 bg-warm-brown mx-auto mb-6"></div>
             </div>
@@ -463,18 +464,18 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-8 mb-10">
               <div>
                 <p className="text-black text-base leading-relaxed mb-4">
-                  Nestled in the heart of Banff on Bear Street, we're proud to serve what locals and visitors alike call <span className="font-bold">"Banff's Best Pizza"</span> — featured on the hit TV show <span className="font-bold">"You Gotta Eat Here."</span>
+                  {t('home.about.text1')}
                 </p>
                 <p className="text-black text-base leading-relaxed">
-                  Our tavern combines premium oven-baked pizzas, <span className="font-bold">craft beers from Three Bears Brewery</span>, and genuine mountain hospitality in a welcoming atmosphere.
+                  {t('home.about.text2')}
                 </p>
               </div>
               <div>
                 <p className="text-black text-base leading-relaxed mb-4">
-                  <span className="font-bold">We're proudly pet-friendly!</span> Bring your furry friends to our year-round heated patio with cozy firepits. We even have a <span className="font-bold">special menu for dogs and dog-friendly beer</span> so your four-legged companions can enjoy the experience too.
+                  {t('home.about.text3')}
                 </p>
                 <p className="text-black text-base leading-relaxed">
-                  Part of the renowned <span className="font-bold">Banff Hospitality Collective</span>, we're committed to quality, community, and creating memories that last in the heart of the Rockies.
+                  {t('home.about.text4')}
                 </p>
               </div>
             </div>
@@ -484,7 +485,7 @@ export default function Home() {
                 href="/about"
                 className="inline-block bg-black text-white hover:bg-black/80 px-10 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black"
               >
-                LEARN MORE
+                {t('home.about.learnMore')}
               </Link>
             </div>
           </div>
@@ -496,11 +497,11 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12 md:mb-20">
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 md:mb-6 font-black text-charcoal">
-              WHAT OUR GUESTS SAY
+              {t('home.testimonials.title')}
             </h2>
             <div className="w-24 h-1 bg-warm-brown mx-auto mb-6"></div>
             <p className="text-charcoal/70 text-base md:text-lg font-medium">
-              Real experiences from real people
+              {t('home.testimonials.subtitle')}
             </p>
           </div>
 
@@ -547,28 +548,28 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-white mb-8 md:mb-12 tracking-tight font-black">
-              READY TO DINE?
+              {t('home.cta.title')}
             </h2>
             <Link
               href="/reservations"
               className="inline-block bg-white text-black hover:bg-white/90 px-10 md:px-16 py-4 md:py-6 font-bold text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] transition-all border-2 border-white hover:scale-105 mb-12 md:mb-16"
             >
-              BOOK YOUR TABLE
+              {t('home.cta.bookTable')}
             </Link>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white/80">
               <div>
-                <p className="text-white/40 text-xs tracking-[0.3em] mb-2">LOCATION</p>
-                <p className="tracking-wide">211 BEAR STREET</p>
-                <p className="tracking-wide">BANFF, AB</p>
+                <p className="text-white/40 text-xs tracking-[0.3em] mb-2">{t('home.cta.location')}</p>
+                <p className="tracking-wide">{t('home.cta.address1')}</p>
+                <p className="tracking-wide">{t('home.cta.address2')}</p>
               </div>
               <div>
-                <p className="text-white/40 text-xs tracking-[0.3em] mb-2">PHONE</p>
+                <p className="text-white/40 text-xs tracking-[0.3em] mb-2">{t('home.cta.phone')}</p>
                 <p className="tracking-wide">403.762.2021</p>
               </div>
               <div>
-                <p className="text-white/40 text-xs tracking-[0.3em] mb-2">HOURS</p>
-                <p className="tracking-wide">MON-SUN: 12PM - 9PM</p>
+                <p className="text-white/40 text-xs tracking-[0.3em] mb-2">{t('home.cta.hours')}</p>
+                <p className="tracking-wide">{t('home.cta.hoursValue')}</p>
               </div>
             </div>
           </div>

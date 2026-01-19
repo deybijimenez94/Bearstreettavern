@@ -6,7 +6,10 @@
       "Bash(git commit:*)",
       "Bash(git branch:*)",
       "Bash(git pull:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

@@ -1,13 +1,11 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'About Us | Bear Street Tavern | Our Story in Banff',
-  description: 'Learn about Bear Street Tavern, Banff\'s award-winning pizza destination featured on "You Gotta Eat Here." Discover our story, pet-friendly philosophy, and commitment to quality.',
-};
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutPage() {
+  const { t } = useLanguage();
   return (
     <main className="min-h-screen bg-white pt-24">
       {/* Hero Section with Background */}
@@ -26,14 +24,14 @@ export default function AboutPage() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <div className="inline-block px-6 py-2 bg-warm-brown text-white text-xs tracking-[0.3em] mb-6 font-bold">
-            OUR STORY
+            {t('about.hero.tag')}
           </div>
           <h1 className="font-display text-6xl md:text-8xl tracking-tight mb-6 font-black text-white">
-            ABOUT US
+            {t('about.hero.title')}
           </h1>
           <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
           <p className="text-white text-xl tracking-wide font-medium">
-            Serving Banff's Best Pizza Since Day One
+            {t('about.hero.subtitle')}
           </p>
         </div>
       </section>
@@ -45,17 +43,17 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
                 <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black text-charcoal">
-                  WELCOME TO BEAR STREET TAVERN
+                  {t('about.welcome.title')}
                 </h2>
                 <div className="w-24 h-1 bg-warm-brown mb-6"></div>
                 <p className="text-charcoal text-lg leading-relaxed mb-4">
-                  Nestled in the heart of Banff on Bear Street, we're proud to serve what locals and visitors alike call <strong>"Banff's Best Pizza"</strong> — featured on the hit TV show <strong>"You Gotta Eat Here"</strong> with John Catucci.
+                  {t('about.welcome.text1')}
                 </p>
                 <p className="text-charcoal text-lg leading-relaxed mb-4">
-                  Our tavern combines premium oven-baked pizzas, craft beers from <strong>Three Bears Brewery</strong>, and genuine mountain hospitality in a welcoming atmosphere that feels like home.
+                  {t('about.welcome.text2')}
                 </p>
                 <p className="text-charcoal text-lg leading-relaxed">
-                  Whether you're cozying up in a booth for two or bringing friends and family to take over a table for 20, we've got the perfect spot for you.
+                  {t('about.welcome.text3')}
                 </p>
               </div>
               <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
@@ -77,7 +75,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black text-charcoal">
-              AWARDS & RECOGNITION
+              {t('about.awards.title')}
             </h2>
             <div className="w-24 h-1 bg-warm-brown mx-auto"></div>
           </div>
@@ -95,10 +93,10 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">
-                YOU GOTTA EAT HERE
+                {t('about.awards.youGottaEat')}
               </h3>
               <p className="text-charcoal/70">
-                Featured on the popular Food Network show, showcasing our award-winning pizzas to a national audience.
+                {t('about.awards.youGottaEatDesc')}
               </p>
             </div>
 
@@ -114,10 +112,10 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">
-                RESTAURANT GURU 2019
+                {t('about.awards.restaurantGuru')}
               </h3>
               <p className="text-charcoal/70">
-                Recognized as "Best Pizza" for our commitment to quality and authentic flavors.
+                {t('about.awards.restaurantGuruDesc')}
               </p>
             </div>
 
@@ -133,10 +131,10 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">
-                OPENTABLE 2024
+                {t('about.awards.openTable')}
               </h3>
               <p className="text-charcoal/70">
-                Honored with OpenTable's Diners' Choice Award for exceptional dining experiences.
+                {t('about.awards.openTableDesc')}
               </p>
             </div>
           </div>
@@ -148,7 +146,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black">
-              WHAT MAKES US SPECIAL
+              {t('about.special.title')}
             </h2>
             <div className="w-24 h-1 bg-white mx-auto"></div>
           </div>
@@ -169,10 +167,10 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-2xl tracking-wider mb-3 font-bold">
-                    100% PET-FRIENDLY
+                    {t('about.special.petFriendly')}
                   </h3>
                   <p className="text-white/80 leading-relaxed">
-                    We're proudly pet-friendly! Bring your furry friends to our year-round heated patio with cozy firepits. We even have a <strong>special menu for dogs and dog-friendly beer</strong> so your four-legged companions can enjoy the experience too.
+                    {t('about.special.petFriendlyDesc')}
                   </p>
                 </div>
               </div>
@@ -191,10 +189,10 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-2xl tracking-wider mb-3 font-bold">
-                    THREE BEARS BREWERY
+                    {t('about.special.brewery')}
                   </h3>
                   <p className="text-white/80 leading-relaxed">
-                    Featuring exclusive craft beers from Three Bears Brewery, along with a full selection of craft beers, cocktails, and beverages carefully curated to complement your meal.
+                    {t('about.special.breweryDesc')}
                   </p>
                 </div>
               </div>
@@ -213,10 +211,10 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-2xl tracking-wider mb-3 font-bold">
-                    FAMILY FRIENDLY
+                    {t('about.special.familyFriendly')}
                   </h3>
                   <p className="text-white/80 leading-relaxed">
-                    Children are most welcome! Whether it's a family dinner or a celebration, we provide a warm and welcoming atmosphere for guests of all ages.
+                    {t('about.special.familyFriendlyDesc')}
                   </p>
                 </div>
               </div>
@@ -235,10 +233,10 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-2xl tracking-wider mb-3 font-bold">
-                    QUALITY INGREDIENTS
+                    {t('about.special.quality')}
                   </h3>
                   <p className="text-white/80 leading-relaxed">
-                    We use 24-hour fermented dough, organic San Marzano sauce, and the freshest toppings to create our signature oven-baked pizzas that keep people coming back.
+                    {t('about.special.qualityDesc')}
                   </p>
                 </div>
               </div>
@@ -252,14 +250,14 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black text-charcoal">
-              OUR PHILOSOPHY
+              {t('about.philosophy.title')}
             </h2>
             <div className="w-24 h-1 bg-warm-brown mx-auto mb-8"></div>
             <p className="text-charcoal text-xl leading-relaxed mb-6">
-              At Bear Street Tavern, we believe in creating more than just great food — we create experiences and memories that last a lifetime in the heart of the Canadian Rockies.
+              {t('about.philosophy.text1')}
             </p>
             <p className="text-charcoal text-lg leading-relaxed">
-              Part of the renowned <strong>Banff Hospitality Collective</strong>, we're committed to quality, community, and delivering genuine mountain hospitality. Whether you're a local or visiting from around the world, we want you to feel at home from the moment you walk through our doors.
+              {t('about.philosophy.text2')}
             </p>
           </div>
         </div>
@@ -271,7 +269,7 @@ export default function AboutPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black text-charcoal">
-                VISIT US
+                {t('about.visit.title')}
               </h2>
               <div className="w-24 h-1 bg-warm-brown mx-auto"></div>
             </div>
@@ -287,14 +285,14 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="font-display text-2xl tracking-wider font-bold text-charcoal">
-                    LOCATION
+                    {t('about.visit.locationTitle')}
                   </h3>
                 </div>
-                <p className="text-charcoal font-bold mb-1">211 Bear Street</p>
-                <p className="text-charcoal/70 mb-1">Banff, Alberta T1L 1A1</p>
-                <p className="text-charcoal/70 mb-4">Canada</p>
+                <p className="text-charcoal font-bold mb-1">{t('about.visit.address1')}</p>
+                <p className="text-charcoal/70 mb-1">{t('about.visit.address2')}</p>
+                <p className="text-charcoal/70 mb-4">{t('about.visit.address3')}</p>
                 <p className="text-charcoal/70 text-sm">
-                  Located in the heart of downtown Banff, just steps from all the main attractions.
+                  {t('about.visit.locationDesc')}
                 </p>
               </div>
 
@@ -307,16 +305,16 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="font-display text-2xl tracking-wider font-bold text-charcoal">
-                    HOURS
+                    {t('about.visit.hoursTitle')}
                   </h3>
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                    <span className="font-bold text-charcoal">Monday - Sunday</span>
-                    <span className="text-charcoal/70">12:00 PM - 9:00 PM</span>
+                    <span className="font-bold text-charcoal">{t('about.visit.hoursDay')}</span>
+                    <span className="text-charcoal/70">{t('about.visit.hoursTime')}</span>
                   </div>
                   <p className="text-charcoal/70 text-sm mt-4">
-                    <strong>Kitchen closes at 9:00 PM</strong><br />
+                    <strong>{t('about.visit.hoursNote')}</strong><br />
                   </p>
                 </div>
               </div>
@@ -330,20 +328,20 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-8 font-black">
-              READY TO EXPERIENCE BANFF'S BEST PIZZA?
+              {t('about.cta.title')}
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="/reservations"
                 className="bg-white text-black hover:bg-white/90 px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
               >
-                BOOK A TABLE
+                {t('about.cta.bookTable')}
               </Link>
               <Link
                 href="/order-online"
                 className="bg-warm-brown text-white hover:bg-warm-brown/90 px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-warm-brown hover:scale-105"
               >
-                ORDER ONLINE
+                {t('about.cta.orderOnline')}
               </Link>
             </div>
           </div>
@@ -357,7 +355,7 @@ export default function AboutPage() {
             href="/"
             className="inline-block bg-black text-white hover:bg-charcoal px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black"
           >
-            BACK TO HOME
+            {t('about.cta.backHome')}
           </Link>
         </div>
       </section>

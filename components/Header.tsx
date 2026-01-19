@@ -145,88 +145,103 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Compact Right-Side Menu */}
       <div
-        className={`lg:hidden fixed inset-0 z-[100] bg-black transition-transform duration-500 ease-in-out ${
+        className={`lg:hidden fixed inset-y-0 right-0 z-[100] w-72 bg-black transition-transform duration-500 ease-in-out shadow-2xl ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center space-y-6 py-24 relative z-10">
-          {/* Logo in mobile menu */}
-          <div className="mb-6">
-            <div className="relative w-28 h-28">
+        {/* Background Logo */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+          <div className="relative w-48 h-48">
+            <Image
+              src="/images/BST.jpg"
+              alt="Bear Street Tavern Logo"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+        </div>
+
+        {/* Menu Content */}
+        <div className="relative z-10 h-full flex flex-col py-20 px-6">
+          {/* Logo at top */}
+          <div className="mb-8 text-center">
+            <div className="relative w-16 h-16 mx-auto mb-2">
               <Image
-                src="/images/BSTLOGO-01.png"
+                src="/images/BST.jpg"
                 alt="Bear Street Tavern Logo"
                 layout="fill"
                 objectFit="contain"
               />
             </div>
+            <div className="font-display text-xs tracking-[0.2em] text-white">
+              BEAR STREET
+            </div>
+            <div className="text-[10px] tracking-[0.3em] text-white/60">
+              TAVERN
+            </div>
           </div>
 
-          {/* Language Switcher Mobile */}
-          <div className="mb-4">
+          {/* Language Switcher */}
+          <div className="mb-6 flex justify-center">
             <LanguageSwitcher />
           </div>
 
-          {/* Navigation Links */}
-          <nav className="flex flex-col items-center space-y-6 w-full max-w-md">
-            {navLinks.map((link, index) => (
+          {/* Navigation Links - Compact */}
+          <nav className="flex-1 flex flex-col space-y-1">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:text-warm-brown text-3xl tracking-[0.2em] font-bold transition-all hover:scale-105 transform border-b-2 border-white/30 pb-4 w-full text-center"
+                className="text-white hover:bg-white/10 hover:text-white px-4 py-3 text-sm tracking-wider font-medium transition-all border-b border-white/10"
                 onClick={() => setIsMobileMenuOpen(false)}
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                  animation: isMobileMenuOpen ? 'fadeInUp 0.5s ease-out forwards' : 'none'
-                }}
               >
                 {t(link.label)}
               </Link>
             ))}
           </nav>
 
-          {/* Contact & CTA */}
-          <div className="pt-10 space-y-6 text-center w-full max-w-md">
+          {/* Contact & CTA - Compact */}
+          <div className="pt-6 space-y-4 border-t border-white/10">
             <a
               href="tel:4037622021"
-              className="flex items-center justify-center text-white hover:text-warm-brown text-xl tracking-wider transition-colors gap-3"
+              className="flex items-center text-white/80 hover:text-white text-sm tracking-wide transition-colors gap-2"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               403.762.2021
             </a>
             <Link
               href="/reservations"
-              className="block bg-white text-black hover:bg-white/90 px-12 py-5 font-bold tracking-[0.25em] transition-all text-center border-2 border-white hover:scale-105 text-base"
+              className="block bg-white text-black hover:bg-white/90 px-6 py-3 font-bold tracking-wider transition-all text-center text-xs"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t('header.bookNow')}
             </Link>
-          </div>
 
-          {/* Social Links */}
-          <div className="flex gap-5 pt-8">
-            <a
-              href="https://instagram.com/bearstreettavern"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-14 h-14 border-2 border-white/30 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all"
-              aria-label="Instagram"
-            >
-              <span className="text-base text-white font-bold">IG</span>
-            </a>
-            <a
-              href="https://facebook.com/bearstreettavern"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-14 h-14 border-2 border-white/30 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all"
-              aria-label="Facebook"
-            >
-              <span className="text-base text-white font-bold">FB</span>
-            </a>
+            {/* Social Links - Compact */}
+            <div className="flex gap-3 justify-center pt-4">
+              <a
+                href="https://instagram.com/bearstreettavern"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-white/30 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all"
+                aria-label="Instagram"
+              >
+                <span className="text-xs text-white font-bold">IG</span>
+              </a>
+              <a
+                href="https://facebook.com/bearstreettavern"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 border border-white/30 flex items-center justify-center hover:border-white hover:bg-white/10 transition-all"
+                aria-label="Facebook"
+              >
+                <span className="text-xs text-white font-bold">FB</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
