@@ -9,7 +9,16 @@
       "Bash(git push:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 33220 -Force\")",
+      "Bash(powershell:*)",
+      "Bash(node --version:*)",
+      "Bash(npm install:*)",
+      "Bash(dir nul)",
+      "Bash(del .\\\\nul)",
+      "Bash(git clean:*)",
+      "Bash(cmd /c del /F /Q /A \"\\\\\\\\?\\\\c:\\\\Users\\\\deybi\\\\Documents\\\\Proyectos\\\\bear-street-tavern\\\\nul\")",
+      "Bash(python:*)"
     ]
   }
 }

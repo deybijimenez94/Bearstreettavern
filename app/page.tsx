@@ -22,7 +22,7 @@ export default function Home() {
   const pizzas = [
     { img: '/images/Food/Food1.jpg', name: 'home.pizzas.godfather', desc: 'home.pizzas.godfatherDesc', price: '$24.99', badge: 'home.pizzas.awardWinning' },
     { img: '/images/Food/BigBird.jpg', name: 'home.pizzas.bigBird', desc: 'home.pizzas.bigBirdDesc', price: '$23.99', badge: 'home.pizzas.popular' },
-    { img: '/images/Food/Food3.jpg', name: 'home.pizzas.margarita', desc: 'home.pizzas.margaritaDesc', price: '$19.99', badge: 'home.pizzas.vegetarian' }
+    { img: '/images/Food/margarita.jpg', name: 'home.pizzas.margarita', desc: 'home.pizzas.margaritaDesc', price: '$19.99', badge: 'home.pizzas.vegetarian' }
   ];
 
   useEffect(() => {
@@ -262,7 +262,7 @@ export default function Home() {
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all">
               <div className="relative h-80 overflow-hidden">
                 <Image
-                  src="/images/Drinks/Drink1.jpg"
+                  src="/images/Drinks/Drink7.jpg"
                   alt="Craft Beers"
                   fill
                   style={{ objectFit: 'cover' }}
