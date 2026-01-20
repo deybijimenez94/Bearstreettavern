@@ -148,9 +148,9 @@ export default function Header() {
       {/* Mobile Menu Backdrop - Black Overlay */}
       <div
         className={`lg:hidden fixed inset-0 z-[90] transition-opacity duration-500 ${
-          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          isMobileMenuOpen ? '' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ backgroundColor: '#000000' }}
+        style={{ backgroundColor: 'rgb(0, 0, 0)', opacity: isMobileMenuOpen ? 1 : 0 }}
         onClick={() => setIsMobileMenuOpen(false)}
       ></div>
 
