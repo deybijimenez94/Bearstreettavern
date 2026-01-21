@@ -148,18 +148,25 @@ export default function Header() {
       {/* Mobile Menu Backdrop - Black Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black"
-          style={{ zIndex: 9998 }}
+          className="lg:hidden fixed inset-0"
+          style={{
+            zIndex: 9998,
+            backgroundColor: '#000000',
+            opacity: 1
+          }}
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
       )}
 
       {/* Mobile Menu Overlay - Compact Right-Side Menu */}
       <div
-        className={`lg:hidden fixed inset-y-0 right-0 w-72 bg-black transition-transform duration-500 ease-in-out shadow-2xl ${
+        className={`lg:hidden fixed inset-y-0 right-0 w-72 transition-transform duration-500 ease-in-out shadow-2xl ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ zIndex: 9999 }}
+        style={{
+          zIndex: 9999,
+          backgroundColor: '#000000'
+        }}
       >
         {/* Background Logo */}
         <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
