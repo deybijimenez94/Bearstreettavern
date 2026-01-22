@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
+import DietaryOptions from '@/components/DietaryOptions';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -497,6 +498,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Dietary Options Section */}
+      <DietaryOptions />
 
       {/* Testimonials Section */}
       <section className="py-16 md:py-24 bg-gray-50 relative">

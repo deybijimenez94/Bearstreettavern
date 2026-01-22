@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
+import SchemaOrg from "@/components/SchemaOrg";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -61,61 +62,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} antialiased`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Restaurant',
-              name: 'Bear Street Tavern',
-              url: 'https://bearstreettavern.ca',
-              logo: 'https://bearstreettavern.ca/BST.jpg',
-              image: 'https://bearstreettavern.ca/Gallery-1.jpg',
-              telephone: '+1-403-762-2021',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '211 Bear Street',
-                addressLocality: 'Banff',
-                addressRegion: 'AB',
-                postalCode: 'T1L 1A1',
-                addressCountry: 'CA',
-              },
-              servesCuisine: ['Pizza', 'Pub', 'Canadian'],
-              priceRange: '$'
-              ,openingHoursSpecification: [
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: [
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                    'Saturday',
-                    'Sunday'
-                  ],
-                  opens: '11:30',
-                  closes: '21:00'
-                }
-              ],
-              sameAs: [
-                'https://instagram.com/bearstreettavern',
-                'https://facebook.com/bearstreettavern'
-              ],
-              potentialAction: {
-                '@type': 'ReserveAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: 'https://www.opentable.com/r/bear-street-tavern-banff',
-                  actionPlatform: [
-                    'http://schema.org/DesktopWebPlatform',
-                    'http://schema.org/MobileWebPlatform'
-                  ]
-                }
-              }
-            })
-          }}
-        />
+        <SchemaOrg />
         <Providers>
           <Header />
           {children}
