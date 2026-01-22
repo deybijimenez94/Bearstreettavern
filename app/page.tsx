@@ -77,7 +77,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-black">
+    <main id="main-content" className="min-h-screen bg-black">
       {/* Hero Section - Full Screen with Minimal Design */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -208,16 +208,23 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-4" role="group" aria-label="Pizza carousel navigation">
               {pizzas.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setPizzaSlide(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === pizzaSlide ? 'bg-white w-8' : 'bg-white/30'
+                  onKeyDown={(e) => {
+                    if (e.key === 'ArrowLeft' && idx > 0) setPizzaSlide(idx - 1);
+                    if (e.key === 'ArrowRight' && idx < pizzas.length - 1) setPizzaSlide(idx + 1);
+                  }}
+                  className={`p-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black ${
+                    idx === pizzaSlide ? 'bg-white' : 'bg-white/30'
                   }`}
                   aria-label={`Go to pizza ${idx + 1}`}
-                />
+                  aria-current={idx === pizzaSlide ? 'true' : 'false'}
+                >
+                  <span className={`block rounded-full ${idx === pizzaSlide ? 'w-4 h-2' : 'w-2 h-2'}`} />
+                </button>
               ))}
             </div>
           </div>

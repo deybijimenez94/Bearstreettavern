@@ -104,6 +104,12 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:bg-black focus:text-white focus:z-[9999] focus:px-6 focus:py-4 focus:font-bold focus:tracking-wider"
+        >
+          Skip to main content
+        </a>
         <SchemaOrg />
         <Providers>
           <Header />

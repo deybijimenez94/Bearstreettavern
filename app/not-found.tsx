@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 flex items-center justify-center">
+    <main id="main-content" className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 flex items-center justify-center">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Large 404 */}

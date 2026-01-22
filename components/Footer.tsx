@@ -52,24 +52,38 @@ export default function Footer() {
                 onSubmit={handleNewsletterSubmit}
                 className="flex flex-col sm:flex-row gap-2 md:gap-3 max-w-lg mx-auto"
               >
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email Address for Newsletter
+                </label>
                 <input
+                  id="newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t('footer.email')}
                   required
-                  className="flex-1 px-4 md:px-6 py-2 md:py-3 bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white transition-all tracking-wide text-xs md:text-sm"
+                  aria-required="true"
+                  aria-label="Email address for newsletter subscription"
+                  className="flex-1 px-4 md:px-6 py-2 md:py-3 bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white focus:ring-2 focus:ring-white transition-all tracking-wide text-xs md:text-sm"
                 />
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-white text-black hover:bg-white/90 px-6 md:px-8 py-2 md:py-3 font-bold tracking-wider transition-all disabled:opacity-50 border border-white text-xs md:text-sm"
+                  aria-busy={isSubmitting}
+                  className="bg-white text-black hover:bg-white/90 px-6 md:px-8 py-2 md:py-3 font-bold tracking-wider transition-all disabled:opacity-50 border border-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
                 >
                   {isSubmitting ? t('footer.subscribing') : t('footer.subscribe')}
                 </button>
               </form>
               {message && (
-                <p className="mt-3 md:mt-4 text-white/80 font-bold tracking-wider text-xs md:text-sm">{message}</p>
+                <div
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="mt-3 md:mt-4 text-white/80 font-bold tracking-wider text-xs md:text-sm bg-green-900/30 border border-green-500 p-3 rounded"
+                >
+                  {message}
+                </div>
               )}
             </div>
           </div>

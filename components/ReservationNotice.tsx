@@ -11,7 +11,7 @@ export default function ReservationNotice() {
             {/* Icon */}
             <div className="flex-shrink-0">
               <div className="w-20 h-20 md:w-24 md:h-24 bg-warm-brown rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>

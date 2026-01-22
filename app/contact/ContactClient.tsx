@@ -38,7 +38,7 @@ export default function ContactClient() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24">
+    <main id="main-content" className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-16">
@@ -126,7 +126,8 @@ export default function ContactClient() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none transition-colors text-charcoal"
+                    aria-required="true"
+                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none focus:ring-2 focus:ring-warm-brown transition-colors text-charcoal"
                     placeholder="John Doe"
                   />
                 </div>
@@ -142,7 +143,8 @@ export default function ContactClient() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none transition-colors text-charcoal"
+                    aria-required="true"
+                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none focus:ring-2 focus:ring-warm-brown transition-colors text-charcoal"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -203,13 +205,20 @@ export default function ContactClient() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-black text-white hover:bg-charcoal px-8 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black disabled:opacity-50 disabled:cursor-not-allowed"
+                  aria-busy={isSubmitting}
+                  aria-label={isSubmitting ? "Sending message, please wait" : "Send message"}
+                  className="w-full bg-black text-white hover:bg-charcoal px-8 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-warm-brown focus:ring-offset-2"
                 >
                   {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                 </button>
 
                 {submitMessage && (
-                  <div className="bg-green-100 border-2 border-green-500 text-green-800 px-4 py-3 rounded text-center font-bold">
+                  <div
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                    className="bg-green-100 border-2 border-green-500 text-green-800 px-4 py-3 rounded text-center font-bold"
+                  >
                     {submitMessage}
                   </div>
                 )}
