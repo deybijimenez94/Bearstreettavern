@@ -28,20 +28,12 @@ export default function ReservationNotice() {
                   Book ahead to guarantee your table and skip the wait.
                 </span>
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <Link
-                  href="/reservations"
-                  className="inline-block bg-warm-brown text-white hover:bg-warm-brown/90 px-8 py-3 font-bold text-sm tracking-wider transition-all border-2 border-warm-brown hover:scale-105 shadow-md"
-                >
-                  📅 BOOK YOUR TABLE NOW
-                </Link>
-                <a
-                  href="tel:4037622021"
-                  className="inline-block bg-white text-charcoal hover:bg-gray-50 px-8 py-3 font-bold text-sm tracking-wider transition-all border-2 border-charcoal"
-                >
-                  📞 CALL TO RESERVE
+              <p className="text-sm text-charcoal/80 mt-2">
+                <strong className="text-warm-brown">💡 Reserve ahead:</strong> Use the "BOOK NOW" button in the navigation above or call us at{' '}
+                <a href="tel:4037622021" className="text-warm-brown hover:text-warm-brown/80 font-bold underline">
+                  403.762.2021
                 </a>
-              </div>
+              </p>
             </div>
           </div>
 

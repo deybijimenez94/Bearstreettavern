@@ -233,26 +233,6 @@ export default function OrderOnlinePage() {
           </div>
         </div>
 
-        {/* Final CTA */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="bg-gradient-to-r from-warm-brown to-terracotta text-white p-12 rounded-lg">
-            <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black">
-              HUNGRY? ORDER NOW!
-            </h2>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Your favorite Bear Street Tavern meals are just a click away. Fast, easy, and delicious!
-            </p>
-            <a
-              href="https://bearsttavern.xdineapp.com/#home"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-charcoal hover:bg-cream px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
-            >
-              ORDER FOR PICKUP
-            </a>
-          </div>
-        </div>
-
         {/* Or Visit Us */}
         <div className="text-center">
           <p className="text-charcoal/60 mb-4">Prefer to dine in?</p>

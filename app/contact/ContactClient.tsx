@@ -242,17 +242,12 @@ export default function ContactClient() {
                 </div>
                 <div className="p-6">
                   <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">FIND US HERE</h3>
-                  <p className="text-charcoal/70 mb-4">
+                  <p className="text-charcoal/70 mb-2">
                     Located in the heart of downtown Banff, we're easy to find on Bear Street, just steps from all the main attractions.
                   </p>
-                  <a
-                    href="https://maps.google.com/?q=211+Bear+Street,+Banff,+AB+T1L+1A1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-warm-brown text-white hover:bg-warm-brown/90 px-6 py-3 font-bold text-xs tracking-wider transition-all"
-                  >
-                    GET DIRECTIONS
-                  </a>
+                  <p className="text-xs text-charcoal/60 italic">
+                    Scroll down for full map and directions
+                  </p>
                 </div>
               </div>
 

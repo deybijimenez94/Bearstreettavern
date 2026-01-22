@@ -116,14 +116,9 @@ export default function ReservationsPage() {
                     <span className="text-black/80">50% OFF Pizza</span>
                   </li>
                 </ul>
-                <a
-                  href="https://www.opentable.com/r/bear-street-tavern-banff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
-                >
-                  BOOK NOW
-                </a>
+                <p className="text-xs text-charcoal/60 mt-4 italic">
+                  Reserve through OpenTable above to enjoy this special
+                </p>
               </div>
 
               {/* Monday */}
@@ -136,14 +131,9 @@ export default function ReservationsPage() {
                     <span className="text-black/80 font-bold">50% OFF Pizza</span>
                   </li>
                 </ul>
-                <a
-                  href="https://www.opentable.com/r/bear-street-tavern-banff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
-                >
-                  BOOK NOW
-                </a>
+                <p className="text-xs text-charcoal/60 mt-4 italic">
+                  Reserve through OpenTable above to enjoy this special
+                </p>
               </div>
 
               {/* Tuesday */}
@@ -160,14 +150,9 @@ export default function ReservationsPage() {
                     <span className="text-black/80">$6 Margaritas</span>
                   </li>
                 </ul>
-                <a
-                  href="https://www.opentable.com/r/bear-street-tavern-banff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
-                >
-                  BOOK NOW
-                </a>
+                <p className="text-xs text-charcoal/60 mt-4 italic">
+                  Reserve through OpenTable above to enjoy this special
+                </p>
               </div>
 
               {/* Wednesday & Thursday */}
@@ -180,14 +165,9 @@ export default function ReservationsPage() {
                     <span className="text-black/80">$6 Margaritas</span>
                   </li>
                 </ul>
-                <a
-                  href="https://www.opentable.com/r/bear-street-tavern-banff"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 md:mt-6 bg-black text-white hover:bg-black/80 px-4 md:px-6 py-2 font-bold text-xs md:text-sm tracking-wider transition-all"
-                >
-                  BOOK NOW
-                </a>
+                <p className="text-xs text-charcoal/60 mt-4 italic">
+                  Reserve through OpenTable above to enjoy this special
+                </p>
               </div>
             </div>
           </section>

@@ -72,7 +72,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Home Page - CTA
     'home.cta.title': 'READY TO DINE?',
-    'home.cta.bookTable': 'BOOK YOUR TABLE',
+    'home.cta.bookTable': 'BOOK TABLE',
     'home.cta.location': 'LOCATION',
     'home.cta.address1': '211 BEAR STREET',
     'home.cta.address2': 'BANFF, AB',
@@ -148,7 +148,7 @@ const translations: Record<Language, Record<string, string>> = {
     'about.visit.hoursTime': '11:30AM - 9PM',
     'about.visit.hoursNote': 'Kitchen closes at 9:00 PM',
     'about.cta.title': 'READY TO EXPERIENCE BANFF\'S BEST PIZZA?',
-    'about.cta.bookTable': 'BOOK A TABLE',
+    'about.cta.bookTable': 'BOOK TABLE',
     'about.cta.orderOnline': 'ORDER ONLINE',
     'about.cta.backHome': 'BACK TO HOME',
 
@@ -238,7 +238,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Home Page - CTA
     'home.cta.title': 'PRÊT À DÎNER?',
-    'home.cta.bookTable': 'RÉSERVEZ VOTRE TABLE',
+    'home.cta.bookTable': 'RÉSERVER UNE TABLE',
     'home.cta.location': 'EMPLACEMENT',
     'home.cta.address1': '211 BEAR STREET',
     'home.cta.address2': 'BANFF, AB',
