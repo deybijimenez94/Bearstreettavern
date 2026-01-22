@@ -762,7 +762,7 @@ export default function MenuClient() {
             <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-4 font-black text-charcoal">
               DIETARY OPTIONS
             </h2>
-            <div className="w-32 h-1 bg-warm-brown mx_auto mb-6"></div>
+            <div className="w-32 h-1 bg-warm-brown mx-auto mb-6"></div>
             <p className="text-black/90 tracking-wide font-medium text-lg mb-4">
               We offer Gluten-Free, Vegetarian, Vegan, and Nut-Free options
             </p>

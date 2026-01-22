@@ -198,9 +198,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay - Compact Right-Side Menu */}
       <div
-        className={`lg:hidden fixed inset-0 flex items-stretch justify-end transition-all duration-300 ease-out ${
-          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`lg:hidden fixed inset-0 flex items-stretch justify-end pointer-events-none`}
         style={{
           zIndex: 9999
         }}
@@ -212,7 +210,7 @@ export default function Header() {
           aria-label="Mobile menu"
           ref={panelRef}
           tabIndex={-1}
-          className={`w-[85%] max-w-sm h-full bg-black border-l border-white/10 shadow-2xl relative overflow-hidden transform will-change-transform transition-transform duration-500 ease-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`w-[85%] max-w-sm h-full bg-black border-l border-white/10 shadow-2xl relative overflow-hidden transform will-change-transform transition-transform duration-300 ease-out pointer-events-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
         {/* Close Button */}
         <button

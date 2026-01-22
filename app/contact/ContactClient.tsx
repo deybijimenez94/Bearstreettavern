@@ -68,7 +68,7 @@ export default function ContactClient() {
               <a href="tel:4037622021" className="text-warm-brown text-2xl font-bold hover:text-warm-brown/80 transition-colors">
                 403.762.2021
               </a>
-              <p className="text-charcoal/60 text-sm mt-2">Mon-Sun: 12PM - 9PM</p>
+              <p className="text-charcoal/60 text-sm mt-2">Mon-Sun: 11:30 AM - 9PM</p>
             </div>
 
             {/* Email */}
