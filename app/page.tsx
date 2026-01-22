@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import DietaryOptions from '@/components/DietaryOptions';
+import ReservationNotice from '@/components/ReservationNotice';
+import AwardsBadges from '@/components/AwardsBadges';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -124,6 +126,9 @@ export default function Home() {
           </svg>
         </div>
       </section>
+
+      {/* Reservation Notice */}
+      <ReservationNotice />
 
       {/* Featured Pizzas Section */}
       <section className="py-12 md:py-24 bg-black relative">
@@ -552,6 +557,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Awards and Badges */}
+      <AwardsBadges />
 
       {/* Final CTA Section */}
       <section className="py-16 md:py-24 bg-black relative overflow-hidden">
