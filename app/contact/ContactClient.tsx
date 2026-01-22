@@ -327,6 +327,52 @@ export default function ContactClient() {
           </div>
         </div>
 
+        {/* Google Maps Section */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="text-center mb-8">
+            <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-4 font-black text-charcoal">
+              FIND US
+            </h2>
+            <div className="w-24 h-1 bg-warm-brown mx-auto mb-4"></div>
+            <p className="text-charcoal/70 text-lg">
+              Located in the heart of downtown Banff on Bear Street
+            </p>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden shadow-xl">
+            <div className="relative w-full h-[450px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.1234567!2d-115.5708!3d51.1784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5370ca45910c4b87%3A0x7f8f3f3f3f3f3f3f!2s211%20Bear%20St%2C%20Banff%2C%20AB%20T1L%201A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Bear Street Tavern Location"
+                className="w-full h-full"
+              />
+            </div>
+
+            <div className="p-6 bg-gray-50 border-t-2 border-gray-200">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-center sm:text-left">
+                  <p className="font-bold text-charcoal mb-1">211 Bear Street, Banff, AB T1L 1A1</p>
+                  <p className="text-charcoal/60 text-sm">Just steps from Banff Avenue</p>
+                </div>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=211+Bear+Street+Banff+AB+T1L+1A1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-warm-brown text-white hover:bg-warm-brown/90 px-8 py-3 font-bold text-sm tracking-wider transition-all whitespace-nowrap"
+                >
+                  GET DIRECTIONS
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Back to Home */}
         <div className="text-center">
           <Link
