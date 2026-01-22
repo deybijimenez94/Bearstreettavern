@@ -215,7 +215,7 @@ export default function OrderOnlinePage() {
             <div className="flex items-start">
               <span className="text-warm-brown mr-3 text-xl">•</span>
               <p className="text-charcoal/80">
-                <strong>Pickup Hours:</strong> Daily 12:00 PM - 9:00 PM
+                <strong>Pickup Hours:</strong> Daily 11:30AM - 9PM
               </p>
             </div>
             <div className="flex items-start">

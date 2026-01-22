@@ -78,7 +78,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.cta.address2': 'BANFF, AB',
     'home.cta.phone': 'PHONE',
     'home.cta.hours': 'HOURS',
-    'home.cta.hoursValue': 'MON-SUN: 12PM - 9PM',
+    'home.cta.hoursValue': 'Daily 11:30AM - 9PM',
 
     // Footer
     'footer.newsletter': 'STAY UPDATED',
@@ -144,8 +144,8 @@ const translations: Record<Language, Record<string, string>> = {
     'about.visit.address3': 'Canada',
     'about.visit.locationDesc': 'Located in the heart of downtown Banff, just steps from all the main attractions.',
     'about.visit.hoursTitle': 'HOURS',
-    'about.visit.hoursDay': 'Monday - Sunday',
-    'about.visit.hoursTime': '12:00 PM - 9:00 PM',
+    'about.visit.hoursDay': 'Daily',
+    'about.visit.hoursTime': '11:30AM - 9PM',
     'about.visit.hoursNote': 'Kitchen closes at 9:00 PM',
     'about.cta.title': 'READY TO EXPERIENCE BANFF\'S BEST PIZZA?',
     'about.cta.bookTable': 'BOOK A TABLE',
@@ -244,7 +244,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.cta.address2': 'BANFF, AB',
     'home.cta.phone': 'TÉLÉPHONE',
     'home.cta.hours': 'HEURES',
-    'home.cta.hoursValue': 'LUN-DIM: 12H - 21H',
+    'home.cta.hoursValue': 'Tous les jours 11h30 - 21h',
 
     // Footer
     'footer.newsletter': 'RESTEZ INFORMÉ',
@@ -310,8 +310,8 @@ const translations: Record<Language, Record<string, string>> = {
     'about.visit.address3': 'Canada',
     'about.visit.locationDesc': 'Situé au cœur du centre-ville de Banff, à quelques pas de toutes les principales attractions.',
     'about.visit.hoursTitle': 'HEURES',
-    'about.visit.hoursDay': 'Lundi - Dimanche',
-    'about.visit.hoursTime': '12h00 - 21h00',
+    'about.visit.hoursDay': 'Tous les jours',
+    'about.visit.hoursTime': '11h30 - 21h',
     'about.visit.hoursNote': 'La cuisine ferme à 21h00',
     'about.cta.title': 'PRÊT À DÉCOUVRIR LA MEILLEURE PIZZA DE BANFF?',
     'about.cta.bookTable': 'RÉSERVER UNE TABLE',
