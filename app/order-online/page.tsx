@@ -5,6 +5,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Order Online | Bear Street Tavern | Takeout & Pickup',
   description: 'Order online from Bear Street Tavern for pickup. Enjoy our oven-baked pizzas, craft beers, and tavern classics from the comfort of your home. Fast, easy online ordering!',
+  alternates: { canonical: '/order-online' },
+  openGraph: {
+    title: 'Order Online | Bear Street Tavern',
+    description: 'Place your pickup order for pizzas, tavern classics, salads and more in Banff. Secure checkout.',
+    url: 'https://bearstreettavern.ca/order-online',
+    type: 'website',
+  },
 };
 
 export default function OrderOnlinePage() {

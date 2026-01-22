@@ -13,16 +13,16 @@ export default function Home() {
   const [touchEnd, setTouchEnd] = useState(0);
 
   const specialsImages = [
-    { src: '/images/especiales/Monday.jpg', alt: 'Monday Special' },
-    { src: '/images/especiales/Sunday.jpg', alt: 'Sunday Special' },
-    { src: '/images/especiales/Tuesday.jpg', alt: 'Tuesday Special' },
-    { src: '/images/especiales/Wednesday+Thursday.jpg', alt: 'Wednesday & Thursday Special' }
+    { src: '/images/Especiales/Monday.jpg', alt: 'Monday Special' },
+    { src: '/images/Especiales/Sunday.jpg', alt: 'Sunday Special' },
+    { src: '/images/Especiales/Tuesday.jpg', alt: 'Tuesday Special' },
+    { src: '/images/Especiales/Wednesday+Thursday.jpg', alt: 'Wednesday & Thursday Special' }
   ];
 
   const pizzas = [
     { img: '/images/Food/Food1.jpg', name: 'home.pizzas.godfather', desc: 'home.pizzas.godfatherDesc', price: '$24.99', badge: 'home.pizzas.awardWinning' },
     { img: '/images/Food/BigBird.jpg', name: 'home.pizzas.bigBird', desc: 'home.pizzas.bigBirdDesc', price: '$23.99', badge: 'home.pizzas.popular' },
-    { img: '/images/Food/margarita.jpg', name: 'home.pizzas.margarita', desc: 'home.pizzas.margaritaDesc', price: '$19.99', badge: 'home.pizzas.vegetarian' }
+    { img: '/images/Food/Margarita.jpg', name: 'home.pizzas.margarita', desc: 'home.pizzas.margaritaDesc', price: '$19.99', badge: 'home.pizzas.vegetarian' }
   ];
 
   useEffect(() => {
@@ -83,6 +83,7 @@ export default function Home() {
             src="/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg"
             alt="Bear Street Tavern Interior"
             fill
+            sizes="100vw"
             style={{ objectFit: 'cover' }}
             quality={100}
             className="opacity-30"
@@ -142,6 +143,7 @@ export default function Home() {
                     src={pizza.img}
                     alt={pizza.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     style={{ objectFit: 'cover' }}
                     className="group-hover:scale-110 transition-transform duration-500"
                   />
@@ -179,6 +181,7 @@ export default function Home() {
                           src={pizza.img}
                           alt={pizza.name}
                           fill
+                          sizes="100vw"
                           style={{ objectFit: 'cover' }}
                         />
                         <div className="absolute inset-0 bg-black/30"></div>
@@ -294,6 +297,7 @@ export default function Home() {
                       src={image.src}
                       alt={image.alt}
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
@@ -341,7 +345,7 @@ export default function Home() {
                 {[
                   { img: '/images/Pets/Pet1.jpg', title: 'home.highlights.petFriendly', desc: 'home.highlights.petFriendlyDesc' },
                   { img: '/images/Drinks/Drink1.jpg', title: 'home.highlights.craftBeers', desc: 'home.highlights.craftBeersDesc' },
-                  { img: '/images/especiales/Monday.jpg', title: 'home.highlights.crazySpecials', desc: 'home.highlights.crazySpecialsDesc' }
+                  { img: '/images/Especiales/Monday.jpg', title: 'home.highlights.crazySpecials', desc: 'home.highlights.crazySpecialsDesc' }
                 ].map((item, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-2">
                     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -350,6 +354,7 @@ export default function Home() {
                           src={item.img}
                           alt={item.title}
                           fill
+                          sizes="100vw"
                           style={{ objectFit: 'cover' }}
                         />
                       </div>
@@ -424,6 +429,7 @@ export default function Home() {
                       src={image.src}
                       alt={image.alt}
                       fill
+                      sizes="(max-width: 768px) 300px, 300px"
                       style={{ objectFit: 'cover' }}
                       className="group-hover:scale-125 transition-transform duration-500"
                     />

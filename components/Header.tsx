@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -12,6 +12,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -55,6 +57,45 @@ export default function Header() {
     };
   }, [lastScrollY]);
 
+  // Accessibility: focus management, Escape to close, and focus trap in mobile menu
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    // Focus the close button or the panel when opened
+    const toFocus = closeBtnRef.current || panelRef.current;
+    toFocus?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setIsMobileMenuOpen(false);
+        return;
+      }
+      if (e.key === 'Tab' && panelRef.current) {
+        const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+          'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+
+        if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { href: '/', label: 'header.home' },
     { href: '/menu', label: 'header.menu' },
@@ -69,7 +110,9 @@ export default function Header() {
       className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isVisible ? 'top-0' : '-top-40'
       } ${
-        isScrolled
+        isMobileMenuOpen
+          ? 'bg-black'
+          : isScrolled
           ? 'bg-black/98 backdrop-blur-lg border-b border-white/10'
           : 'bg-black/40 backdrop-blur-sm'
       }`}
@@ -117,12 +160,7 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="hidden lg:flex items-center space-x-4">
             <LanguageSwitcher />
-            <a
-              href="tel:4037622021"
-              className="text-white/80 hover:text-white text-sm font-medium transition-colors tracking-wide"
-            >
-            </a>
-            <Link
+                        <Link
               href="/reservations"
               className="bg-white text-black hover:bg-white/90 px-6 py-2.5 font-bold text-sm tracking-wider transition-all border border-white hover:shadow-lg hover:shadow-white/20"
             >
@@ -135,6 +173,8 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden text-white hover:text-white/70 transition-colors p-2 relative ${isMobileMenuOpen ? 'z-[110]' : 'z-50'}`}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span className={`w-full h-0.5 bg-current transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -148,11 +188,9 @@ export default function Header() {
       {/* Mobile Menu Backdrop - Black Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0"
+          className="lg:hidden fixed inset-0 bg-black/30"
           style={{
-            zIndex: 9998,
-            backgroundColor: '#000000',
-            opacity: 1
+            zIndex: 9998
           }}
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
@@ -160,16 +198,25 @@ export default function Header() {
 
       {/* Mobile Menu Overlay - Compact Right-Side Menu */}
       <div
-        className={`lg:hidden fixed inset-y-0 right-0 w-72 transition-transform duration-500 ease-in-out shadow-2xl ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`lg:hidden fixed inset-0 flex items-stretch justify-end transition-all duration-300 ease-out ${
+          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         style={{
-          zIndex: 9999,
-          backgroundColor: '#000000'
+          zIndex: 9999
         }}
       >
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile menu"
+          ref={panelRef}
+          tabIndex={-1}
+          className={`w-[85%] max-w-sm h-full bg-black border-l border-white/10 shadow-2xl relative overflow-hidden transform will-change-transform transition-transform duration-500 ease-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        >
         {/* Close Button */}
         <button
+          ref={closeBtnRef}
           onClick={() => setIsMobileMenuOpen(false)}
           className="absolute top-4 right-4 text-white hover:text-white/70 transition-colors z-20 p-2"
           aria-label="Close menu"
@@ -180,11 +227,11 @@ export default function Header() {
         </button>
 
         {/* Background Logo */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none" aria-hidden="true">
           <div className="relative w-48 h-48">
             <Image
               src="/images/BST.jpg"
-              alt="Bear Street Tavern Logo"
+              alt=""
               layout="fill"
               objectFit="contain"
             />
@@ -192,7 +239,7 @@ export default function Header() {
         </div>
 
         {/* Menu Content */}
-        <div className="relative z-10 h-full flex flex-col py-20 px-6">
+        <div className="relative z-10 h-full flex flex-col px-6 pt-20 pb-[max(2rem,env(safe-area-inset-bottom))] overflow-y-auto">
           {/* Logo at top */}
           <div className="mb-8 text-center">
             <div className="relative w-16 h-16 mx-auto mb-2">
@@ -273,6 +320,7 @@ export default function Header() {
           </div>
         </div>
       </div>
+    </div>
     </header>
   );
 }
