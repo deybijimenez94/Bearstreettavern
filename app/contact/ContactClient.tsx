@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -14,6 +14,8 @@ export default function ContactClient() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,86 +39,107 @@ export default function ContactClient() {
     });
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <main id="main-content" className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24">
+    <main ref={sectionRef} id="main-content" className="min-h-screen bg-bg-primary pt-24">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-6 py-2 bg-warm-brown text-white text-xs tracking-[0.3em] mb-6 font-bold">
+        <div className={`text-center mb-12 ${isVisible ? 'scroll-reveal' : ''}`}>
+          <div className="inline-block px-6 py-2 bg-accent-primary text-white text-xs tracking-[0.3em] mb-6 font-bold rounded-lg">
             GET IN TOUCH
           </div>
-          <h1 className="font-display text-6xl md:text-8xl tracking-tight mb-6 font-black text-charcoal">
+          <h1 className="font-display text-4xl md:text-6xl tracking-tight mb-6 font-black text-white">
             CONTACT US
           </h1>
-          <div className="w-32 h-1 bg-warm-brown mx-auto mb-6"></div>
-          <p className="text-charcoal/70 text-xl tracking-wide font-medium max-w-2xl mx-auto">
+          <div className="w-32 h-1 bg-accent-primary mx-auto mb-6"></div>
+          <p className="text-text-secondary text-base md:text-lg tracking-wide font-medium max-w-2xl mx-auto">
             We'd love to hear from you! Reach out with any questions or feedback.
           </p>
         </div>
 
         {/* Contact Info Cards */}
-        <div className="max-w-6xl mx-auto mb-16">
+        <div className={`max-w-6xl mx-auto mb-16 ${isVisible ? 'scroll-reveal scroll-reveal-delay-1' : ''}`}>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Phone */}
-            <div className="bg-white border-2 border-gray-200 p-8 rounded-lg text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-warm-brown rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-black border border-border-subtle p-5 rounded-[3rem] text-center hover:border-accent-primary/30 hover:shadow-lg transition-all">
+              <div className="w-16 h-16 bg-accent-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
-              <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">PHONE</h3>
-              <a href="tel:4037622021" className="text-warm-brown text-2xl font-bold hover:text-warm-brown/80 transition-colors">
+              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">PHONE</h3>
+              <a href="tel:4037622021" className="text-accent-primary text-xl font-bold hover:text-accent-secondary transition-colors">
                 403.762.2021
               </a>
-              <p className="text-charcoal/60 text-sm mt-2">Mon-Sun: 11:30 AM - 9PM</p>
+              <p className="text-text-muted text-sm mt-2">Mon-Sun: 11:30 AM - 9PM</p>
             </div>
 
             {/* Email */}
-            <div className="bg-white border-2 border-gray-200 p-8 rounded-lg text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-warm-brown rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-black border border-border-subtle p-5 rounded-[3rem] text-center hover:border-accent-primary/30 hover:shadow-lg transition-all">
+              <div className="w-16 h-16 bg-accent-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">EMAIL</h3>
-              <a href="mailto:info@bearstreettavern.ca" className="text-warm-brown text-lg font-bold hover:text-warm-brown/80 transition-colors break-all">
+              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">EMAIL</h3>
+              <a href="mailto:info@bearstreettavern.ca" className="text-accent-primary text-base font-bold hover:text-accent-secondary transition-colors break-all">
                 INFO@BEARSTREETTAVERN.CA
               </a>
-              <p className="text-charcoal/60 text-sm mt-2">We reply within 24 hours</p>
+              <p className="text-text-muted text-sm mt-2">We reply within 24 hours</p>
             </div>
 
             {/* Location */}
-            <div className="bg-white border-2 border-gray-200 p-8 rounded-lg text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-warm-brown rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-black border border-border-subtle p-5 rounded-[3rem] text-center hover:border-accent-primary/30 hover:shadow-lg transition-all">
+              <div className="w-16 h-16 bg-accent-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">LOCATION</h3>
-              <p className="text-charcoal font-bold mb-1">211 Bear Street</p>
-              <p className="text-charcoal/70">Banff, AB T1L 1A1</p>
-              <p className="text-charcoal/70">Canada</p>
+              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">LOCATION</h3>
+              <p className="text-white font-bold mb-1">211 Bear Street</p>
+              <p className="text-text-secondary">Banff, AB T1L 1A1</p>
+              <p className="text-text-secondary">Canada</p>
             </div>
           </div>
         </div>
 
         {/* Main Content - Two Columns */}
-        <div className="max-w-6xl mx-auto mb-16">
+        <div className={`max-w-6xl mx-auto mb-16 ${isVisible ? 'scroll-reveal scroll-reveal-delay-2' : ''}`}>
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white border-2 border-gray-200 p-10 rounded-lg">
-              <h2 className="font-display text-3xl tracking-tight mb-6 font-black text-charcoal">
+            <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
+              <h2 className="font-display text-2xl tracking-tight mb-6 font-black text-white">
                 SEND US A MESSAGE
               </h2>
-              <div className="w-16 h-1 bg-warm-brown mb-6"></div>
-              <p className="text-charcoal/70 mb-8">
+              <div className="w-16 h-1 bg-accent-primary mb-6"></div>
+              <p className="text-text-secondary mb-8">
                 Have questions or feedback? Fill out the form below and we'll get back to you as soon as possible.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-charcoal mb-2 tracking-wide">
+                  <label htmlFor="name" className="block text-sm font-bold text-white mb-2 tracking-wide">
                     YOUR NAME *
                   </label>
                   <input
@@ -127,13 +150,13 @@ export default function ContactClient() {
                     onChange={handleChange}
                     required
                     aria-required="true"
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none focus:ring-2 focus:ring-warm-brown transition-colors text-charcoal"
+                    className="w-full px-4 py-3 bg-bg-secondary border-2 border-border-subtle focus:border-accent-primary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-colors text-white rounded-lg"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-charcoal mb-2 tracking-wide">
+                  <label htmlFor="email" className="block text-sm font-bold text-white mb-2 tracking-wide">
                     EMAIL ADDRESS *
                   </label>
                   <input
@@ -144,13 +167,13 @@ export default function ContactClient() {
                     onChange={handleChange}
                     required
                     aria-required="true"
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none focus:ring-2 focus:ring-warm-brown transition-colors text-charcoal"
+                    className="w-full px-4 py-3 bg-bg-secondary border-2 border-border-subtle focus:border-accent-primary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-colors text-white rounded-lg"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-bold text-charcoal mb-2 tracking-wide">
+                  <label htmlFor="phone" className="block text-sm font-bold text-white mb-2 tracking-wide">
                     PHONE NUMBER
                   </label>
                   <input
@@ -159,13 +182,13 @@ export default function ContactClient() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none transition-colors text-charcoal"
+                    className="w-full px-4 py-3 bg-bg-secondary border-2 border-border-subtle focus:border-accent-primary focus:outline-none transition-colors text-white rounded-lg"
                     placeholder="(403) 762-2021"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-bold text-charcoal mb-2 tracking-wide">
+                  <label htmlFor="subject" className="block text-sm font-bold text-white mb-2 tracking-wide">
                     SUBJECT *
                   </label>
                   <select
@@ -174,7 +197,7 @@ export default function ContactClient() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none transition-colors text-charcoal"
+                    className="w-full px-4 py-3 bg-bg-secondary border-2 border-border-subtle focus:border-accent-primary focus:outline-none transition-colors text-white rounded-lg"
                   >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
@@ -187,7 +210,7 @@ export default function ContactClient() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-bold text-charcoal mb-2 tracking-wide">
+                  <label htmlFor="message" className="block text-sm font-bold text-white mb-2 tracking-wide">
                     YOUR MESSAGE *
                   </label>
                   <textarea
@@ -197,7 +220,7 @@ export default function ContactClient() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border-2 border-gray-300 focus:border-warm-brown focus:outline-none transition-colors text-charcoal resize-none"
+                    className="w-full px-4 py-3 bg-bg-secondary border-2 border-border-subtle focus:border-accent-primary focus:outline-none transition-colors text-white resize-none rounded-lg"
                     placeholder="Tell us how we can help..."
                   />
                 </div>
@@ -207,7 +230,7 @@ export default function ContactClient() {
                   disabled={isSubmitting}
                   aria-busy={isSubmitting}
                   aria-label={isSubmitting ? "Sending message, please wait" : "Send message"}
-                  className="w-full bg-black text-white hover:bg-charcoal px-8 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-warm-brown focus:ring-offset-2"
+                  className="w-full bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all border-2 border-accent-primary disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-lg"
                 >
                   {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                 </button>
@@ -217,16 +240,16 @@ export default function ContactClient() {
                     role="status"
                     aria-live="polite"
                     aria-atomic="true"
-                    className="bg-green-100 border-2 border-green-500 text-green-800 px-4 py-3 rounded text-center font-bold"
+                    className="bg-accent-primary/20 border-2 border-accent-primary text-white px-4 py-3 rounded-lg text-center font-bold"
                   >
                     {submitMessage}
                   </div>
                 )}
               </form>
 
-              <p className="text-xs text-charcoal/60 mt-6">
+              <p className="text-xs text-text-muted mt-6">
                 <strong>Note:</strong> For reservations, please use our{' '}
-                <Link href="/reservations" className="text-warm-brown hover:underline">
+                <Link href="/reservations" className="text-accent-primary hover:underline">
                   reservations page
                 </Link>{' '}
                 or call us directly.
@@ -235,41 +258,51 @@ export default function ContactClient() {
 
             {/* Map & Additional Info */}
             <div className="space-y-8">
-              {/* Google Maps */}
-              <div className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden">
-                <div className="h-[400px] relative">
+              {/* Google Map */}
+              <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
+                <h3 className="font-display text-xl tracking-wider mb-4 font-bold text-white">
+                  FIND US HERE
+                </h3>
+                <p className="text-text-secondary mb-4">
+                  Located in the heart of downtown Banff, we're easy to find on Bear Street, just steps from all the main attractions.
+                </p>
+                <p className="text-text-secondary mb-4">
+                  Scroll down for full map and directions.
+                </p>
+                <div className="mb-6">
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=211+Bear+Street%2C+Banff%2C+AB+T1L+1A1%2C+Canada"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-accent-primary text-black hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all rounded-lg"
+                  >
+                    GET DIRECTIONS
+                  </a>
+                </div>
+                <div className="relative h-64 md:h-80 w-full rounded-lg overflow-hidden border border-border-subtle">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2503.8895947397385!2d-115.57096842346835!3d51.17757363975825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5370ca3d9b3b8ec5%3A0x8e3f8c3f8c3f8c3f!2s211%20Bear%20St%2C%20Banff%2C%20AB%20T1L%201A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1234567890"
+                    src="https://maps.google.com/maps?q=211%20Bear%20Street%2C%20Banff%2C%20AB%20T1L%201A1%2C%20Canada&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
-                    allowFullScreen
+                    allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Bear Street Tavern Location"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-charcoal">FIND US HERE</h3>
-                  <p className="text-charcoal/70 mb-2">
-                    Located in the heart of downtown Banff, we're easy to find on Bear Street, just steps from all the main attractions.
-                  </p>
-                  <p className="text-xs text-charcoal/60 italic">
-                    Scroll down for full map and directions
-                  </p>
+                  ></iframe>
                 </div>
               </div>
 
               {/* Hours */}
-              <div className="bg-black text-white p-8 rounded-lg">
-                <h3 className="font-display text-2xl tracking-wider mb-6 font-bold">HOURS OF OPERATION</h3>
+              <div className="bg-bg-secondary text-white p-6 rounded-[3rem] border border-border-subtle">
+                <h3 className="font-display text-xl tracking-wider mb-6 font-bold">HOURS OF OPERATION</h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-white/20 pb-4">
+                  <div className="flex justify-between items-center border-b border-border-subtle pb-4">
                     <span className="font-bold tracking-wider">MONDAY - SUNDAY</span>
-                    <span className="text-white/80">11:30 AM - 9:00 PM</span>
+                    <span className="text-text-secondary">11:30 AM - 9:00 PM</span>
                   </div>
-                  <div className="bg-white/10 p-4 rounded">
-                    <p className="text-sm text-white/80">
+                  <div className="bg-accent-primary/10 border border-accent-primary/30 p-4 rounded-[2rem]">
+                    <p className="text-sm text-text-secondary">
                       <strong className="text-white">Kitchen closes at 9PM</strong>
                       <br />
                     </p>
@@ -278,42 +311,42 @@ export default function ContactClient() {
               </div>
 
               {/* Quick Links */}
-              <div className="bg-gray-50 border-2 border-gray-200 p-8 rounded-lg">
-                <h3 className="font-display text-2xl tracking-wider mb-6 font-bold text-charcoal">QUICK LINKS</h3>
+              <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
+                <h3 className="font-display text-xl tracking-wider mb-6 font-bold text-white">QUICK LINKS</h3>
                 <div className="space-y-3">
-                  <Link href="/reservations" className="flex items-center text-charcoal hover:text-warm-brown transition-colors group">
-                    <span className="mr-3 text-warm-brown">→</span>
+                  <Link href="/reservations" className="flex items-center text-white hover:text-accent-primary transition-colors group">
+                    <span className="mr-3 text-accent-primary">→</span>
                     <span className="font-bold tracking-wide">Make a Reservation</span>
                   </Link>
-                  <Link href="/order-online" className="flex items-center text-charcoal hover:text-warm-brown transition-colors group">
-                    <span className="mr-3 text-warm-brown">→</span>
+                  <Link href="/order-online" className="flex items-center text-white hover:text-accent-primary transition-colors group">
+                    <span className="mr-3 text-accent-primary">→</span>
                     <span className="font-bold tracking-wide">Order Online</span>
                   </Link>
-                  <Link href="/menu" className="flex items-center text-charcoal hover:text-warm-brown transition-colors group">
-                    <span className="mr-3 text-warm-brown">→</span>
+                  <Link href="/menu" className="flex items-center text-white hover:text-accent-primary transition-colors group">
+                    <span className="mr-3 text-accent-primary">→</span>
                     <span className="font-bold tracking-wide">View Menu</span>
                   </Link>
                   <a
                     href="https://banffcollective.com/careers"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-charcoal hover:text-warm-brown transition-colors group"
+                    className="flex items-center text-white hover:text-accent-primary transition-colors group"
                   >
-                    <span className="mr-3 text-warm-brown">→</span>
+                    <span className="mr-3 text-accent-primary">→</span>
                     <span className="font-bold tracking-wide">Careers</span>
                   </a>
                 </div>
               </div>
 
               {/* Social Media */}
-              <div className="bg-white border-2 border-gray-200 p-8 rounded-lg">
-                <h3 className="font-display text-2xl tracking-wider mb-6 font-bold text-charcoal">FOLLOW US</h3>
+              <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
+                <h3 className="font-display text-xl tracking-wider mb-6 font-bold text-white">FOLLOW US</h3>
                 <div className="flex space-x-4">
                   <a
                     href="https://instagram.com/bearstreettavern"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-gradient-to-br from-purple-600 to-pink-500 text-white py-4 text-center font-bold tracking-wider hover:opacity-90 transition-opacity"
+                    className="flex-1 bg-gradient-to-br from-purple-600 to-pink-500 text-white py-4 text-center font-bold tracking-wider hover:opacity-90 transition-opacity rounded-lg"
                   >
                     INSTAGRAM
                   </a>
@@ -321,7 +354,7 @@ export default function ContactClient() {
                     href="https://facebook.com/bearstreettavern"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-blue-600 text-white py-4 text-center font-bold tracking-wider hover:opacity-90 transition-opacity"
+                    className="flex-1 bg-blue-600 text-white py-4 text-center font-bold tracking-wider hover:opacity-90 transition-opacity rounded-lg"
                   >
                     FACEBOOK
                   </a>
@@ -331,57 +364,11 @@ export default function ContactClient() {
           </div>
         </div>
 
-        {/* Google Maps Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="text-center mb-8">
-            <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-4 font-black text-charcoal">
-              FIND US
-            </h2>
-            <div className="w-24 h-1 bg-warm-brown mx-auto mb-4"></div>
-            <p className="text-charcoal/70 text-lg">
-              Located in the heart of downtown Banff on Bear Street
-            </p>
-          </div>
-
-          <div className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden shadow-xl">
-            <div className="relative w-full h-[450px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.1234567!2d-115.5708!3d51.1784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5370ca45910c4b87%3A0x7f8f3f3f3f3f3f3f!2s211%20Bear%20St%2C%20Banff%2C%20AB%20T1L%201A1%2C%20Canada!5e0!3m2!1sen!2sus!4v1234567890"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Bear Street Tavern Location"
-                className="w-full h-full"
-              />
-            </div>
-
-            <div className="p-6 bg-gray-50 border-t-2 border-gray-200">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-center sm:text-left">
-                  <p className="font-bold text-charcoal mb-1">211 Bear Street, Banff, AB T1L 1A1</p>
-                  <p className="text-charcoal/60 text-sm">Just steps from Banff Avenue</p>
-                </div>
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=211+Bear+Street+Banff+AB+T1L+1A1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-warm-brown text-white hover:bg-warm-brown/90 px-8 py-3 font-bold text-sm tracking-wider transition-all whitespace-nowrap"
-                >
-                  GET DIRECTIONS
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Back to Home */}
-        <div className="text-center">
+        <div className={`text-center ${isVisible ? 'scroll-reveal' : ''}`}>
           <Link
             href="/"
-            className="inline-block bg-black text-white hover:bg-charcoal px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black"
+            className="inline-block bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all border-2 border-accent-primary rounded-lg"
           >
             BACK TO HOME
           </Link>

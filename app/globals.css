@@ -1,37 +1,45 @@
 @import "tailwindcss";
 :root {
-    /* Bear Street Tavern Color Palette */
-    --warm-brown: #8B4513;
-    --forest-green: #2d5016;
-    --terracotta: #D2691E;
-    --cream: #F5F5DC;
-    --charcoal: #36454F;
-    --soft-gold: #DAA520;
+    /* Dark Theme Color Palette */
+    --bg-primary: #080808;
+    --bg-secondary: #0c0c0c;
+    --bg-card: rgba(41, 37, 36, 0.3); /* stone-900/30 */
+    --text-primary: #ffffff;
+    --text-secondary: #d6d3d1; /* stone-300 */
+    --text-muted: #a8a29e; /* stone-400 */
+    --accent-primary: #d97706; /* amber-600 */
+    --accent-secondary: #f59e0b; /* amber-500 */
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-tabs: rgba(255, 255, 255, 0.1);
     /* Semantic colors */
-    --background: #ffffff;
-    --foreground: #36454F;
+    --background: #080808;
+    --foreground: #ffffff;
 }
 
 @theme inline {
-    /* Custom Colors */
-    --color-warm-brown: var(--warm-brown);
-    --color-forest-green: var(--forest-green);
-    --color-terracotta: var(--terracotta);
-    --color-cream: var(--cream);
-    --color-charcoal: var(--charcoal);
-    --color-soft-gold: var(--soft-gold);
+    /* Dark Theme Colors */
+    --color-bg-primary: var(--bg-primary);
+    --color-bg-secondary: var(--bg-secondary);
+    --color-bg-card: var(--bg-card);
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-muted: var(--text-muted);
+    --color-accent-primary: var(--accent-primary);
+    --color-accent-secondary: var(--accent-secondary);
+    --color-border-subtle: var(--border-subtle);
+    --color-border-tabs: var(--border-tabs);
     /* Semantic Colors */
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    /* Custom Fonts */
+    /* Custom Fonts - Using Inter for everything */
     --font-sans: var(--font-inter);
-    --font-serif: var(--font-playfair);
-    --font-display: var(--font-bebas);
+    --font-serif: var(--font-inter);
+    --font-display: var(--font-inter);
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
@@ -50,16 +58,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--cream);
+    background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--warm-brown);
+    background: var(--accent-primary);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--terracotta);
+    background: var(--accent-secondary);
 }
 
 
@@ -134,7 +142,70 @@ html {
 
 
 .animate-marquee {
-
   animation: marquee 80s linear infinite;
+}
 
+/* Scroll Reveal Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.scroll-reveal-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.scroll-reveal-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.scroll-reveal-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.scroll-reveal-delay-4 {
+  animation-delay: 0.4s;
 }

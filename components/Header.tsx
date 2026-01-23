@@ -98,7 +98,7 @@ export default function Header() {
 
   const navLinks = [
     { href: '/', label: 'header.home' },
-    { href: '/menu', label: 'header.menu' },
+    { href: '/#menu', label: 'header.menu' },
     { href: '/about', label: 'header.about' },
     { href: '/reservations', label: 'header.reservations' },
     { href: '/gallery', label: 'header.gallery' },
@@ -113,8 +113,8 @@ export default function Header() {
         isMobileMenuOpen
           ? 'bg-black'
           : isScrolled
-          ? 'bg-black/98 backdrop-blur-lg border-b border-white/10'
-          : 'bg-black/40 backdrop-blur-sm'
+          ? 'bg-black/95 backdrop-blur-md border-b border-white/10'
+          : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto px-4 lg:px-8 py-2">
@@ -150,23 +150,31 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/80 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
+                className="text-white/70 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
               >
                 {t(link.label)}
               </Link>
             ))}
+            <a
+              href="https://www.banffcollective.com/banff-careers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
+            >
+              Join Our Team
+            </a>
+            <a
+              href="https://bearsttavern.xdineapp.com/#giftshop/49/chooseCard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
+            >
+              GIFT CARD
+            </a>
           </div>
 
           {/* Right Side Actions */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <LanguageSwitcher />
-                        <Link
-              href="/reservations"
-              className="bg-white text-black hover:bg-white/90 px-6 py-2.5 font-bold text-sm tracking-wider transition-all border border-white hover:shadow-lg hover:shadow-white/20"
-            >
-              {t('header.bookNow')}
-            </Link>
-          </div>
+
 
         {/* Mobile Menu Button */}
           <button
@@ -273,6 +281,24 @@ export default function Header() {
                 {t(link.label)}
               </Link>
             ))}
+            <a
+              href="https://www.banffcollective.com/banff-careers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:bg-white/10 hover:text-white px-4 py-3 text-sm tracking-wider font-medium transition-all border-b border-white/10"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Join Our Team
+            </a>
+            <a
+              href="https://bearsttavern.xdineapp.com/#giftshop/49/chooseCard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:bg-white/10 hover:text-white px-4 py-3 text-sm tracking-wider font-medium transition-all border-b border-white/10"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              GIFT CARD
+            </a>
           </nav>
 
           {/* Contact & CTA - Compact */}
@@ -286,13 +312,7 @@ export default function Header() {
               </svg>
               403.762.2021
             </a>
-            <Link
-              href="/reservations"
-              className="block bg-white text-black hover:bg-white/90 px-6 py-3 font-bold tracking-wider transition-all text-center text-xs"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('header.bookNow')}
-            </Link>
+
 
             {/* Social Links - Compact */}
             <div className="flex gap-3 justify-center pt-4">

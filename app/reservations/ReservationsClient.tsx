@@ -1,14 +1,37 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 export default function ReservationsClient() {
   const [showModal, setShowModal] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Show modal automatically when page loads
     setShowModal(true);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -16,12 +39,12 @@ export default function ReservationsClient() {
       {/* Modal Overlay */}
       {showModal && (
         <div
-          className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black z-50 flex items-center justify-center p-4"
           onClick={() => setShowModal(false)}
         >
           {/* Modal Content */}
           <div
-            className="bg-gradient-to-r from-amber-50 to-orange-50 border-4 border-warm-brown rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            className="bg-gradient-to-r from-bg-secondary to-bg-primary border-4 border-accent-primary rounded-[3rem] max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -30,7 +53,7 @@ export default function ReservationsClient() {
             {/* Close Button */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 bg-black text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-warm-brown focus:ring-offset-2"
+              className="absolute top-4 right-4 bg-white text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2"
               aria-label="Close modal"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -38,12 +61,12 @@ export default function ReservationsClient() {
               </svg>
             </button>
 
-            <div className="p-6 md:p-12">
+            <div className="p-4 md:p-10">
               <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-8">
                 {/* Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 md:w-24 md:h-24 bg-warm-brown rounded-full flex items-center justify-center shadow-lg">
-                    <svg className="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <div className="w-16 h-16 md:w-24 md:h-24 bg-accent-primary rounded-full flex items-center justify-center shadow-lg">
+                    <svg className="w-8 h-8 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -51,18 +74,18 @@ export default function ReservationsClient() {
 
                 {/* Content */}
                 <div className="flex-grow text-center md:text-left">
-                  <h2 id="reservation-modal-title" className="font-display text-2xl md:text-3xl tracking-tight mb-3 font-black text-charcoal">
+                  <h2 id="reservation-modal-title" className="font-display text-xl md:text-3xl tracking-tight mb-3 font-black text-white">
                     ⚠️ RESERVATIONS STRONGLY RECOMMENDED
                   </h2>
-                  <p className="text-charcoal text-base md:text-lg leading-relaxed mb-4">
-                    <strong className="text-warm-brown">We're a popular spot!</strong> Walk-in wait times can exceed <span className="font-bold text-red-700">2+ hours</span> during peak season (June-September) and weekends.
+                  <p className="text-text-secondary text-sm md:text-lg leading-relaxed mb-4">
+                    <strong className="text-accent-primary">We're a popular spot!</strong> Walk-in wait times can exceed <span className="font-bold text-red-500">2+ hours</span> during peak season (June-September) and weekends.
                     <span className="block mt-2">
                       Book ahead to guarantee your table and skip the wait.
                     </span>
                   </p>
-                  <p className="text-sm text-charcoal/80 mt-2">
-                    <strong className="text-warm-brown">💡 Reserve ahead:</strong> Use the OpenTable button below or call us at{' '}
-                    <a href="tel:4037622021" className="text-warm-brown hover:text-warm-brown/80 font-bold underline">
+                  <p className="text-sm text-text-muted mt-2">
+                    <strong className="text-accent-primary">💡 Reserve ahead:</strong> Use the OpenTable button below or call us at{' '}
+                    <a href="tel:4037622021" className="text-accent-primary hover:text-accent-secondary font-bold underline">
                       403.762.2021
                     </a>
                   </p>
@@ -70,21 +93,21 @@ export default function ReservationsClient() {
               </div>
 
               {/* Additional Info */}
-              <div className="pt-6 border-t-2 border-warm-brown/30">
+              <div className="pt-6 border-t-2 border-accent-primary/30">
                 <div className="grid md:grid-cols-3 gap-4 text-center md:text-left">
                   <div>
-                    <p className="text-sm text-charcoal/80">
-                      <span className="font-bold text-warm-brown">⭐ Pro Tip:</span> Book 2-3 days ahead during summer
+                    <p className="text-sm text-text-secondary">
+                      <span className="font-bold text-accent-primary">⭐ Pro Tip:</span> Book 2-3 days ahead during summer
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-charcoal/80">
-                      <span className="font-bold text-warm-brown">🍕 Daily Specials:</span> Available for dine-in reservations
+                    <p className="text-sm text-text-secondary">
+                      <span className="font-bold text-accent-primary">🍕 Daily Specials:</span> Available for dine-in reservations
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-charcoal/80">
-                      <span className="font-bold text-warm-brown">🐕 Pet-Friendly:</span> Mention when booking for patio
+                    <p className="text-sm text-text-secondary">
+                      <span className="font-bold text-accent-primary">🐕 Pet-Friendly:</span> Mention when booking for patio
                     </p>
                   </div>
                 </div>
@@ -94,7 +117,7 @@ export default function ReservationsClient() {
               <div className="mt-8 text-center">
                 <button
                   onClick={() => setShowModal(false)}
-                  className="bg-black text-white hover:bg-charcoal px-8 py-3 font-bold text-sm tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-warm-brown focus:ring-offset-2"
+                  className="bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-lg"
                 >
                   GOT IT, SHOW ME RESERVATIONS
                 </button>
@@ -105,150 +128,150 @@ export default function ReservationsClient() {
       )}
 
       {/* Reservations Page Content */}
-      <main id="main-content" className="min-h-screen bg-linear-to-b from-gray-50 to-white pt-24">
+      <main ref={sectionRef} id="main-content" className="min-h-screen bg-bg-primary pt-24">
         <div className="container mx-auto px-4 lg:px-8 py-16">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-block px-6 py-2 bg-warm-brown text-white text-xs tracking-[0.3em] mb-6 font-bold">
+          <div className={`text-center mb-12 ${isVisible ? 'scroll-reveal' : ''}`}>
+            <div className="inline-block px-6 py-2 bg-accent-primary text-white text-xs tracking-[0.3em] mb-6 font-bold rounded-lg">
               SECURE YOUR TABLE
             </div>
-            <h1 className="font-display text-4xl md:text-8xl tracking-tight mb-6 font-black text-charcoal">
+            <h1 className="font-display text-3xl md:text-6xl tracking-tight mb-6 font-black text-white">
               RESERVATIONS
             </h1>
-            <div className="w-32 h-1 bg-warm-brown mx-auto mb-6"></div>
-            <p className="text-charcoal/70 text-base md:text-xl tracking-wide font-medium max-w-2xl mx-auto px-4">
+            <div className="w-32 h-1 bg-accent-primary mx-auto mb-6"></div>
+            <p className="text-text-secondary text-sm md:text-lg tracking-wide font-medium max-w-2xl mx-auto px-4">
               Book Your Table at Banff's Best Pizza
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-16">
             {/* OpenTable Integration */}
-            <section className="bg-black text-white p-6 md:p-12 rounded-lg text-center">
-              <h2 className="font-display text-2xl md:text-4xl tracking-tight mb-4 md:mb-6 font-black">
+            <section className={`bg-bg-secondary text-white p-4 md:p-10 rounded-[3rem] text-center border border-border-subtle ${isVisible ? 'scroll-reveal scroll-reveal-delay-1' : ''}`}>
+              <h2 className="font-display text-xl md:text-3xl tracking-tight mb-4 md:mb-6 font-black">
                 BOOK ONLINE NOW
               </h2>
-              <div className="w-24 h-1 bg-white mx-auto mb-6 md:mb-8"></div>
-              <p className="text-white/80 mb-6 md:mb-8 text-base md:text-lg">
+              <div className="w-24 h-1 bg-accent-primary mx-auto mb-6 md:mb-8"></div>
+              <p className="text-text-secondary mb-6 md:mb-8 text-sm md:text-lg">
                 Reserve your table instantly through OpenTable
               </p>
               <a
                 href="https://www.opentable.com/r/bear-street-tavern-banff"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-white text-black hover:bg-white/90 px-6 md:px-12 py-3 md:py-4 font-bold text-xs md:text-sm tracking-wider md:tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
+                className="inline-block bg-accent-primary text-white hover:bg-accent-secondary px-6 md:px-10 py-3 md:py-4 font-bold text-xs md:text-sm tracking-wider md:tracking-[0.3em] transition-all border-2 border-accent-primary hover:scale-105 rounded-lg"
               >
                 RESERVE ON OPENTABLE
               </a>
-              <p className="text-white/60 text-xs md:text-sm mt-4 md:mt-6">
+              <p className="text-text-muted text-xs md:text-sm mt-4 md:mt-6">
                 Instant confirmation • Easy to modify • No fees
               </p>
             </section>
 
             {/* Contact Information */}
-            <section className="bg-gray-50 border-2 border-gray-200 p-6 md:p-10 rounded-lg">
-              <h2 className="font-display text-xl md:text-3xl tracking-tight mb-6 font-bold text-center text-charcoal">
+            <section className={`bg-black border border-border-subtle p-4 md:p-8 rounded-[3rem] ${isVisible ? 'scroll-reveal scroll-reveal-delay-2' : ''}`}>
+              <h2 className="font-display text-lg md:text-2xl tracking-tight mb-6 font-bold text-center text-white">
                 PREFER TO CALL?
               </h2>
               <div className="text-center space-y-4">
                 <div>
-                  <p className="text-black/60 text-sm mb-2">Phone</p>
+                  <p className="text-text-muted text-sm mb-2">Phone</p>
                   <a
                     href="tel:4037622021"
-                    className="text-2xl font-bold text-black hover:text-black/70 transition-colors tracking-wide"
+                    className="text-xl font-bold text-white hover:text-text-secondary transition-colors tracking-wide"
                   >
                     403.762.2021
                   </a>
                 </div>
                 <div>
-                  <p className="text-black/60 text-sm mb-2">Email</p>
+                  <p className="text-text-muted text-sm mb-2">Email</p>
                   <a
                     href="mailto:info@bearstreettavern.ca"
-                    className="text-lg font-medium text-black hover:text-black/70 transition-colors"
+                    className="text-base font-medium text-white hover:text-text-secondary transition-colors"
                   >
                     info@bearstreettavern.ca
                   </a>
                 </div>
                 <div className="pt-4">
-                  <p className="text-black/60 text-sm mb-2">Address</p>
-                  <p className="text-black font-medium">211 Bear Street</p>
-                  <p className="text-black font-medium">Banff, AB T1L 1A1</p>
+                  <p className="text-text-muted text-sm mb-2">Address</p>
+                  <p className="text-white font-medium">211 Bear Street</p>
+                  <p className="text-white font-medium">Banff, AB T1L 1A1</p>
                 </div>
               </div>
             </section>
 
             {/* Daily Specials */}
-            <section>
-              <h2 className="font-display text-2xl md:text-4xl tracking-tight mb-6 md:mb-8 text-center font-black text-charcoal">
+            <section className={`${isVisible ? 'scroll-reveal scroll-reveal-delay-3' : ''}`}>
+              <h2 className="font-display text-xl md:text-3xl tracking-tight mb-6 md:mb-8 text-center font-black text-white">
                 DAILY SPECIALS
               </h2>
-              <p className="text-center text-black/60 mb-6 md:mb-10 text-xs md:text-sm italic px-4">
+              <p className="text-center text-text-muted mb-6 md:mb-10 text-xs md:text-sm italic px-4">
                 Excludes holidays and extended weekends • Select pizzas and calzones only
               </p>
               <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                 {/* Sunday */}
-                <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
-                  <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">SUNDAY</h3>
-                  <p className="text-black/70 mb-4 text-sm">5:00 PM onwards</p>
+                <div className="bg-black border border-border-subtle p-4 md:p-6 rounded-[3rem] hover:border-accent-primary/30 hover:shadow-lg transition-all">
+                  <h3 className="font-bold text-base md:text-lg tracking-wider mb-3 text-white">SUNDAY</h3>
+                  <p className="text-text-secondary mb-4 text-sm">5:00 PM onwards</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="text-black mr-2">•</span>
-                      <span className="text-black/80">$10 Steins</span>
+                      <span className="text-accent-primary mr-2">•</span>
+                      <span className="text-text-secondary">$10 Steins</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-black mr-2">•</span>
-                      <span className="text-black/80">50% OFF Pizza</span>
+                      <span className="text-accent-primary mr-2">•</span>
+                      <span className="text-text-secondary">50% OFF Pizza</span>
                     </li>
                   </ul>
-                  <p className="text-xs text-charcoal/60 mt-4 italic">
+                  <p className="text-xs text-text-muted mt-4 italic">
                     Reserve through OpenTable above to enjoy this special
                   </p>
                 </div>
 
                 {/* Monday */}
-                <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
-                  <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">MONDAY</h3>
-                  <p className="text-black/70 mb-4 text-sm">5:00 PM onwards</p>
+                <div className="bg-black border border-border-subtle p-4 md:p-6 rounded-[3rem] hover:border-accent-primary/30 hover:shadow-lg transition-all">
+                  <h3 className="font-bold text-base md:text-lg tracking-wider mb-3 text-white">MONDAY</h3>
+                  <p className="text-text-secondary mb-4 text-sm">5:00 PM onwards</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="text-black mr-2">•</span>
-                      <span className="text-black/80 font-bold">50% OFF Pizza</span>
+                      <span className="text-accent-primary mr-2">•</span>
+                      <span className="text-text-secondary font-bold">50% OFF Pizza</span>
                     </li>
                   </ul>
-                  <p className="text-xs text-charcoal/60 mt-4 italic">
+                  <p className="text-xs text-text-muted mt-4 italic">
                     Reserve through OpenTable above to enjoy this special
                   </p>
                 </div>
 
                 {/* Tuesday */}
-                <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
-                  <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">TUESDAY</h3>
-                  <p className="text-black/70 mb-4 text-sm">All day</p>
+                <div className="bg-black border border-border-subtle p-4 md:p-6 rounded-[3rem] hover:border-accent-primary/30 hover:shadow-lg transition-all">
+                  <h3 className="font-bold text-base md:text-lg tracking-wider mb-3 text-white">TUESDAY</h3>
+                  <p className="text-text-secondary mb-4 text-sm">All day</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="text-black mr-2">•</span>
-                      <span className="text-black/80">$12 Calzones</span>
+                      <span className="text-accent-primary mr-2">•</span>
+                      <span className="text-text-secondary">$12 Calzones</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-black mr-2">•</span>
-                      <span className="text-black/80">$6 Margaritas</span>
+                      <span className="text-accent-primary mr-2">•</span>
+                      <span className="text-text-secondary">$6 Margaritas</span>
                     </li>
                   </ul>
-                  <p className="text-xs text-charcoal/60 mt-4 italic">
+                  <p className="text-xs text-text-muted mt-4 italic">
                     Reserve through OpenTable above to enjoy this special
                   </p>
                 </div>
 
                 {/* Wednesday & Thursday */}
-                <div className="bg-gray-50 border-2 border-gray-200 p-6 md:p-8 rounded-lg hover:shadow-lg transition-shadow">
-                  <h3 className="font-bold text-lg md:text-xl tracking-wider mb-3 text-charcoal">WEDNESDAY & THURSDAY</h3>
-                  <p className="text-black/70 mb-4 text-sm">All day</p>
+                <div className="bg-black border border-border-subtle p-4 md:p-6 rounded-[3rem] hover:border-accent-primary/30 hover:shadow-lg transition-all">
+                  <h3 className="font-bold text-base md:text-lg tracking-wider mb-3 text-white">WEDNESDAY & THURSDAY</h3>
+                  <p className="text-text-secondary mb-4 text-sm">All day</p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="text-black mr-2">•</span>
-                      <span className="text-black/80">$6 Margaritas</span>
+                      <span className="text-accent-primary mr-2">•</span>
+                      <span className="text-text-secondary">$6 Margaritas</span>
                     </li>
                   </ul>
-                  <p className="text-xs text-charcoal/60 mt-4 italic">
+                  <p className="text-xs text-text-muted mt-4 italic">
                     Reserve through OpenTable above to enjoy this special
                   </p>
                 </div>
@@ -256,26 +279,26 @@ export default function ReservationsClient() {
             </section>
 
             {/* Important Information */}
-            <section className="bg-black text-white p-6 md:p-10 rounded-lg">
-              <h2 className="font-display text-xl md:text-3xl tracking-tight mb-6 font-bold text-center">
+            <section className={`bg-bg-secondary text-white p-4 md:p-8 rounded-[3rem] border border-border-subtle ${isVisible ? 'scroll-reveal scroll-reveal-delay-4' : ''}`}>
+              <h2 className="font-display text-lg md:text-2xl tracking-tight mb-6 font-bold text-center">
                 IMPORTANT INFORMATION
               </h2>
               <div className="space-y-4 max-w-2xl mx-auto">
-                <div className="border-l-4 border-white/30 pl-4 md:pl-6">
-                  <h3 className="font-bold mb-2 text-sm md:text-base">Group Size Policy</h3>
-                  <p className="text-white/80 text-sm md:text-base">
+                <div className="border-l-4 border-accent-primary/50 pl-4 md:pl-6">
+                  <h3 className="font-bold mb-2 text-sm">Group Size Policy</h3>
+                  <p className="text-text-secondary text-xs md:text-sm">
                     We do not accept large group events of 17 or more guests. For group bookings, please contact other Banff Hospitality Collective venues.
                   </p>
                 </div>
-                <div className="border-l-4 border-white/30 pl-4 md:pl-6">
-                  <h3 className="font-bold mb-2 text-sm md:text-base">Dog-Friendly Patio</h3>
-                  <p className="text-white/80 text-sm md:text-base">
+                <div className="border-l-4 border-accent-primary/50 pl-4 md:pl-6">
+                  <h3 className="font-bold mb-2 text-sm">Dog-Friendly Patio</h3>
+                  <p className="text-text-secondary text-xs md:text-sm">
                     Our year-round heated patio with fire tables welcomes your furry friends! We offer a special canine menu and dog-friendly beer. Please note: the patio is not enclosed and is subject to the elements.
                   </p>
                 </div>
-                <div className="border-l-4 border-white/30 pl-4 md:pl-6">
-                  <h3 className="font-bold mb-2 text-sm md:text-base">Special Event Policies</h3>
-                  <p className="text-white/80 text-sm md:text-base">
+                <div className="border-l-4 border-accent-primary/50 pl-4 md:pl-6">
+                  <h3 className="font-bold mb-2 text-sm">Special Event Policies</h3>
+                  <p className="text-text-secondary text-xs md:text-sm">
                     Daily specials exclude holidays and extended weekends. Selected pizzas and calzones only.
                   </p>
                 </div>
@@ -283,10 +306,10 @@ export default function ReservationsClient() {
             </section>
 
             {/* Back to Home */}
-            <div className="text-center pt-8">
+            <div className={`text-center pt-8 ${isVisible ? 'scroll-reveal' : ''}`}>
               <Link
                 href="/"
-                className="inline-block bg-black text-white hover:bg-black/80 px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border-2 border-black focus:outline-none focus:ring-2 focus:ring-warm-brown focus:ring-offset-2"
+                className="inline-block bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all border-2 border-accent-primary focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-lg"
               >
                 BACK TO HOME
               </Link>
