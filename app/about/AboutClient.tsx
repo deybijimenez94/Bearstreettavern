@@ -86,7 +86,7 @@ export default function AboutClient() {
               <div className={`relative h-[400px] rounded-lg overflow-hidden border border-border-subtle ${isVisible ? 'scroll-reveal scroll-reveal-delay-1' : ''}`}>
                 <Image
                   src="/images/Patio/Patio3.jpg"
-                  alt="Bear Street Tavern Interior"
+                  alt="Bear Street Tavern Patio"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   style={{ objectFit: 'cover' }}

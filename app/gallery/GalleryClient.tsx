@@ -62,7 +62,7 @@ const galleryImages = [
 ];
 
 export default function GalleryClient() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const [filter, setFilter] = useState<string>('all');
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -146,7 +146,7 @@ export default function GalleryClient() {
               {filteredImages.map((image, index) => (
                 <div
                   key={index}
-                  onClick={() => setSelectedImage(image.src)}
+                  onClick={() => setSelectedImage({ src: image.src, alt: image.alt })}
                   className="relative w-48 h-48 flex-shrink-0 overflow-hidden cursor-pointer bg-bg-secondary rounded-[3rem] shadow-lg active:scale-95 transition-transform"
                 >
                   <Image
@@ -169,7 +169,7 @@ export default function GalleryClient() {
           {filteredImages.map((image, index) => (
             <div
               key={index}
-              onClick={() => setSelectedImage(image.src)}
+              onClick={() => setSelectedImage({ src: image.src, alt: image.alt })}
               className="group relative aspect-square overflow-hidden cursor-pointer bg-bg-secondary rounded-[3rem] shadow-lg hover:shadow-2xl hover:border hover:border-accent-primary/30 transition-all"
             >
               <Image
@@ -209,8 +209,8 @@ export default function GalleryClient() {
             </button>
             <div className="relative max-w-6xl w-full h-[80vh]">
               <Image
-                src={selectedImage}
-                alt="Gallery Image"
+                src={selectedImage.src}
+                alt={selectedImage.alt}
                 fill
                 style={{ objectFit: 'contain' }}
                 className="rounded-[3rem]"

@@ -19,7 +19,10 @@
       "Bash(git clean:*)",
       "Bash(cmd /c del /F /Q /A \"\\\\\\\\?\\\\c:\\\\Users\\\\deybi\\\\Documents\\\\Proyectos\\\\bear-street-tavern\\\\nul\")",
       "Bash(python:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(timeout /t 3)",
+      "Bash(timeout:*)",
+      "Bash(ping:*)"
     ]
   }
 }

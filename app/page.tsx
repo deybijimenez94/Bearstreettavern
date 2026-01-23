@@ -81,20 +81,20 @@ export default function Home() {
       {/* Hero Section - Full Screen with Minimal Design */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg"
-            alt="Bear Street Tavern Interior"
-            fill
-            sizes="100vw"
-            style={{ objectFit: 'cover' }}
-            quality={100}
-            className="opacity-30"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-
+                  <div className="absolute inset-0">
+                    <Image
+                      src="/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg"
+                      alt="Bear Street Tavern Interior"
+                      fill
+                      sizes="100vw"
+                      style={{ objectFit: 'cover' }}
+                      quality={85}
+                      className="opacity-30"
+                      priority
+                    />
+                    {/* Overlay with black/40 to transparent gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  </div>
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
           {/* Main Headline */}
@@ -110,12 +110,22 @@ export default function Home() {
           </h2>
 
           {/* Badge */}
-          <div className="inline-block mb-16 md:mb-20 animate-fade-in animation-delay-400">
+          <div className="inline-block mb-8 md:mb-10 animate-fade-in animation-delay-400">
             <div className="border-2 border-white/50 px-4 md:px-8 py-2 md:py-3 bg-white/5 backdrop-blur-sm">
               <p className="text-white font-bold text-xs tracking-[0.25em] md:tracking-[0.35em]">
                 {t('home.hero.badge')}
               </p>
             </div>
+          </div>
+
+          {/* Book Now Button */}
+          <div className="animate-fade-in animation-delay-600">
+            <Link
+              href="/reservations"
+              className="inline-block bg-white text-black hover:bg-white/90 px-8 md:px-12 py-4 md:py-5 font-bold text-sm md:text-base tracking-[0.25em] transition-all border-2 border-white hover:scale-105 hover:shadow-2xl"
+            >
+              BOOK NOW
+            </Link>
           </div>
 
         </div>
@@ -148,6 +158,7 @@ export default function Home() {
                       alt={pizza.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
+                      quality={80}
                       style={{ objectFit: 'cover' }}
                       className="group-hover:scale-110 transition-transform duration-500"
                     />
@@ -186,6 +197,7 @@ export default function Home() {
                             alt={pizza.name}
                             fill
                             sizes="100vw"
+                            quality={80}
                             style={{ objectFit: 'cover' }}
                           />
                           <div className="absolute inset-0 bg-black/30"></div>
@@ -232,9 +244,7 @@ export default function Home() {
       </AnimatedSection>
 
       {/* Interactive Menu - Deployed on Same Page */}
-      <AnimatedSection>
-        <InteractiveMenu />
-      </AnimatedSection>
+      <InteractiveMenu />
 
       {/* Highlights Section */}
       <AnimatedSection>
@@ -257,6 +267,8 @@ export default function Home() {
                       src="/images/Pets/Pet1.jpg"
                       alt="Dog-friendly patio"
                       fill
+                      quality={80}
+                      loading="lazy"
                       style={{ objectFit: 'cover' }}
                       className="group-hover:scale-110 transition-transform duration-500"
                     />
@@ -282,6 +294,8 @@ export default function Home() {
                       src="/images/Drinks/Drink7.jpg"
                       alt="Craft Beers"
                       fill
+                      quality={80}
+                      loading="lazy"
                       style={{ objectFit: 'cover' }}
                       className="group-hover:scale-110 transition-transform duration-500"
                     />
@@ -315,6 +329,8 @@ export default function Home() {
                           alt={image.alt}
                           fill
                           sizes="(max-width: 768px) 100vw, 33vw"
+                          quality={80}
+                          loading="lazy"
                           style={{ objectFit: 'cover' }}
                         />
                       </div>
@@ -374,6 +390,8 @@ export default function Home() {
                                       alt={item.title}
                                       fill
                                       sizes="100vw"
+                                      quality={80}
+                                      loading="lazy"
                                       style={{ objectFit: 'cover' }}
                                     />
                                     <div className="absolute inset-0 bg-black/60"></div>
@@ -450,7 +468,9 @@ export default function Home() {
                         src={image.src}
                         alt={image.alt}
                         fill
-                        sizes="(max-width: 768px) 300px, 300px"
+                        sizes="300px"
+                        quality={75}
+                        loading="lazy"
                         style={{ objectFit: 'cover' }}
                         className="group-hover:scale-125 transition-transform duration-500"
                       />

@@ -147,7 +147,7 @@ export default function Footer() {
             </div>
 
             {/* Column 3: Contact Info */}
-            <div className="text-left">
+            <address className="text-left not-italic">
               <h4 className="font-display text-xs md:text-sm tracking-[0.3em] mb-3 md:mb-4 font-bold">
                 {t('footer.contact')}
               </h4>
@@ -171,7 +171,7 @@ export default function Footer() {
                   <p className="text-white/80 tracking-wide text-[10px] md:text-xs">{t('footer.hoursValue')}</p>
                 </li>
               </ul>
-            </div>
+            </address>
 
             {/* Column 4: Social */}
             <div className="col-span-2 lg:col-span-1 text-center lg:text-left">
