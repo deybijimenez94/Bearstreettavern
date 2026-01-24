@@ -108,9 +108,10 @@ export default function AboutClient() {
             <div className="w-24 h-1 bg-accent-primary mx-auto"></div>
           </div>
 
-          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          {/* Desktop: Static Grid */}
+          <div className="hidden md:grid max-w-7xl mx-auto md:grid-cols-3 gap-8">
             {/* You Gotta Eat Here */}
-            <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all">
+            <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all p-6">
               <div className="relative h-48 mb-6 rounded-lg overflow-hidden bg-bg-secondary">
                 <Image
                   src="/images/AWARDS & RECOGNITION/YOU GOTTA EAT HERE.jpg"
@@ -129,7 +130,7 @@ export default function AboutClient() {
             </div>
 
             {/* Best Pizza */}
-            <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all">
+            <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all p-6">
               <div className="relative h-48 mb-6 rounded-lg overflow-hidden bg-bg-secondary">
                 <Image
                   src="/images/AWARDS & RECOGNITION/RESTAURANT GURU 2019.jpg"
@@ -148,7 +149,7 @@ export default function AboutClient() {
             </div>
 
             {/* OpenTable */}
-            <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all">
+            <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all p-6">
               <div className="relative h-48 mb-6 rounded-lg overflow-hidden bg-bg-secondary">
                 <Image
                   src="/images/AWARDS & RECOGNITION/OPENTABLE 2024.jpg"
@@ -164,6 +165,55 @@ export default function AboutClient() {
               <p className="text-text-secondary">
                 {t('about.awards.openTableDesc')}
               </p>
+            </div>
+          </div>
+
+          {/* Mobile: Auto-scrolling Carousel */}
+          <div className="md:hidden relative w-full overflow-hidden">
+            <div className="flex w-max animate-marquee-slow">
+              {[...Array(3)].map((_, duplicateIndex) => (
+                [
+                  {
+                    img: '/images/AWARDS & RECOGNITION/YOU GOTTA EAT HERE.jpg',
+                    alt: 'You Gotta Eat Here',
+                    title: 'about.awards.youGottaEat',
+                    desc: 'about.awards.youGottaEatDesc'
+                  },
+                  {
+                    img: '/images/AWARDS & RECOGNITION/RESTAURANT GURU 2019.jpg',
+                    alt: 'Restaurant Guru 2019',
+                    title: 'about.awards.restaurantGuru',
+                    desc: 'about.awards.restaurantGuruDesc'
+                  },
+                  {
+                    img: '/images/AWARDS & RECOGNITION/OPENTABLE 2024.jpg',
+                    alt: 'OpenTable 2024',
+                    title: 'about.awards.openTable',
+                    desc: 'about.awards.openTableDesc'
+                  }
+                ].map((award, awardIndex) => (
+                  <div key={`${duplicateIndex}-${awardIndex}`} className="w-[300px] mx-4 flex-shrink-0">
+                    <div className="bg-bg-card backdrop-blur-sm border border-border-subtle rounded-lg text-center hover:border-accent-primary/30 transition-all p-6 h-full">
+                      <div className="relative h-48 mb-6 rounded-lg overflow-hidden bg-bg-secondary">
+                        <Image
+                          src={award.img}
+                          alt={award.alt}
+                          fill
+                          sizes="300px"
+                          style={{ objectFit: 'contain' }}
+                          className="p-4"
+                        />
+                      </div>
+                      <h3 className="font-display text-xl tracking-wider mb-3 font-bold text-white">
+                        {t(award.title)}
+                      </h3>
+                      <p className="text-text-secondary text-sm">
+                        {t(award.desc)}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              ))}
             </div>
           </div>
         </div>

@@ -122,7 +122,7 @@ export default function Home() {
           <div className="animate-fade-in animation-delay-600">
             <Link
               href="/reservations"
-              className="inline-block bg-white text-black hover:bg-white/90 px-8 md:px-12 py-4 md:py-5 font-bold text-sm md:text-base tracking-[0.25em] transition-all border-2 border-white hover:scale-105 hover:shadow-2xl"
+              className="inline-block bg-white/10 md:bg-white text-white md:text-black hover:bg-white/20 md:hover:bg-white/90 backdrop-blur-sm px-8 md:px-12 py-4 md:py-5 font-bold text-sm md:text-base tracking-[0.25em] transition-all border-2 border-white hover:scale-105 hover:shadow-2xl"
             >
               BOOK NOW
             </Link>
@@ -489,7 +489,7 @@ export default function Home() {
                 href="https://instagram.com/bearstreettavern"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-white text-black hover:bg-white/90 px-12 py-5 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white"
+                className="inline-block bg-white/10 md:bg-white text-white md:text-black hover:bg-white/20 md:hover:bg-white/90 backdrop-blur-sm px-12 py-5 font-bold text-sm tracking-[0.3em] transition-all border-2 border-white"
               >
                 {t('home.instagram.followUs')}
               </a>
@@ -606,7 +606,7 @@ export default function Home() {
         <div className="text-center py-16">
           <Link
               href="/reservations"
-              className="inline-block bg-white text-black hover:bg-white/90 px-10 md:px-16 py-4 md:py-6 font-bold text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
+              className="inline-block bg-white/10 md:bg-white text-white md:text-black hover:bg-white/20 md:hover:bg-white/90 backdrop-blur-sm px-10 md:px-16 py-4 md:py-6 font-bold text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] transition-all border-2 border-white hover:scale-105"
           >
               {t('home.cta.bookTable')}
           </Link>
