@@ -613,10 +613,10 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* Back to Top Button */}
+      {/* Back to Top Button - Hidden on mobile */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-white text-black hover:bg-white/90 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all z-40 border-2 border-white hover:scale-110"
+        className="hidden md:flex fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-white text-black hover:bg-white/90 w-12 h-12 md:w-14 md:h-14 items-center justify-center transition-all z-40 border-2 border-white hover:scale-110"
         aria-label="Back to top"
       >
         <svg

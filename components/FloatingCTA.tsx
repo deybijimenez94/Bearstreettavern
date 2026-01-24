@@ -38,7 +38,7 @@ export default function FloatingCTA({ type }: FloatingCTAProps) {
       className="fixed bottom-4 right-4 z-50"
       aria-label={buttonText}
     >
-      <div className="bg-black hover:bg-accent-primary text-white hover:text-black border border-white/20 hover:border-accent-primary rounded-full shadow-lg transition-all duration-300 flex items-center gap-2 px-4 py-3">
+      <div className="bg-black hover:bg-accent-primary text-white hover:text-black border-2 border-white/30 hover:border-accent-primary rounded-full transition-all duration-300 flex items-center gap-2 px-4 py-3">
         {/* Icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
