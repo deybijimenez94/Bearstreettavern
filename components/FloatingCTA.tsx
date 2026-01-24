@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 type CTAButtonType = 'reserve' | 'order';
 
@@ -11,7 +10,6 @@ interface FloatingCTAProps {
 }
 
 export default function FloatingCTA({ type }: FloatingCTAProps) {
-  const { t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -31,20 +29,20 @@ export default function FloatingCTA({ type }: FloatingCTAProps) {
     return null;
   }
 
-  const buttonText = type === 'reserve' ? t('common.reserve') : t('common.order');
+  const buttonText = type === 'reserve' ? 'BOOK' : 'ORDER';
   const buttonLink = type === 'reserve' ? '/reservations' : '/order-online';
 
   return (
     <Link
       href={buttonLink}
-      className="fixed bottom-6 right-6 z-50 group"
+      className="fixed bottom-4 right-4 z-50"
       aria-label={buttonText}
     >
-      <div className="bg-accent-primary hover:bg-accent-secondary text-black rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-3 px-6 py-4">
+      <div className="bg-black hover:bg-accent-primary text-white hover:text-black border border-white/20 hover:border-accent-primary rounded-full shadow-lg transition-all duration-300 flex items-center gap-2 px-4 py-3">
         {/* Icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 shrink-0"
+          className="h-4 w-4 shrink-0"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -57,12 +55,10 @@ export default function FloatingCTA({ type }: FloatingCTAProps) {
           />
         </svg>
         {/* Text */}
-        <span className="font-bold text-sm uppercase tracking-wide">
-          {type === 'reserve' ? 'RESERVE' : 'ORDER'}
+        <span className="font-bold text-xs uppercase tracking-wider">
+          BOOK
         </span>
       </div>
-      {/* Pulse animation */}
-      <div className="absolute inset-0 rounded-full bg-accent-primary opacity-20 animate-ping"></div>
     </Link>
   );
 }

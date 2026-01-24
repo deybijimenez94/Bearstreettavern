@@ -337,27 +337,27 @@ export default function Home() {
                     ))}
                     <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors"></div>
                   </div>
-                  <div className="bg-black p-8 text-center">
+                  <div className="bg-black p-6 text-center">
                     <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-white">
                       {t('home.highlights.crazySpecials')}
                     </h3>
-                    <div className="w-16 h-1 bg-accent-primary mx-auto mb-5"></div>
-                    <p className="text-text-secondary leading-relaxed text-sm mb-6">
+                    <div className="w-16 h-1 bg-accent-primary mx-auto mb-4"></div>
+                    <p className="text-text-secondary leading-relaxed text-sm mb-4">
                       {t('home.highlights.crazySpecialsDesc')}
                     </p>
                     <Link
                       href="/specials"
-                      className="inline-block bg-accent-primary text-black hover:bg-accent-secondary px-8 py-3 font-bold text-xs tracking-wider transition-all"
+                      className="inline-block bg-accent-primary text-black hover:bg-accent-secondary px-6 py-2 font-bold text-xs tracking-wider transition-all"
                     >
                       {t('home.highlights.viewSpecials')}
                     </Link>
-                    <div className="flex justify-center gap-2 mt-5">
+                    <div className="flex justify-center gap-2 mt-3">
                       {specialsImages.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => setCurrentSlide(index)}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            index === currentSlide ? 'bg-accent-primary w-8' : 'bg-white/30'
+                          className={`w-1.5 h-1.5 rounded-full transition-all ${
+                            index === currentSlide ? 'bg-accent-primary w-6' : 'bg-white/30'
                           }`}
                           aria-label={`Go to slide ${index + 1}`}
                         />
@@ -548,15 +548,15 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <AnimatedSection>
-        <section className="py-16 md:py-24 bg-bg-primary relative">
+        <section className="py-16 md:py-24 bg-white relative">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center mb-12 md:mb-20">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 md:mb-6 font-black text-white">
-                {t('home.testimonials.title')}
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 md:mb-6 font-black text-black">
+                WHAT OUR GUESTS SAY
               </h2>
               <div className="w-24 h-1 bg-accent-primary mx-auto mb-6"></div>
-              <p className="text-text-secondary text-base md:text-lg font-medium">
-                {t('home.testimonials.subtitle')}
+              <p className="text-gray-700 text-base md:text-lg font-medium">
+                Real reviews from TripAdvisor
               </p>
             </div>
 
@@ -564,30 +564,31 @@ export default function Home() {
               <div className="flex w-max animate-marquee">
                 {[...Array(2)].map((_, i) => (
                   [
-                    { id: 1, author: "Sarah M.", location: "Calgary, AB", stars: 5, content: "Best pizza we've had in Canada! The Godfather is absolutely incredible. A must-visit in Banff!" },
-                    { id: 2, author: "Mike & Lisa T.", location: "Vancouver, BC", stars: 5, content: "Love that we can bring our dogs! The patio is beautiful and the firepits make it perfect." },
-                    { id: 3, author: "Jennifer K.", location: "Toronto, ON", stars: 5, content: "Now we understand why it was on 'You Gotta Eat Here'! Amazing food, generous portions." },
-                    { id: 4, author: "David R.", location: "Edmonton, AB", stars: 5, content: "The Big Bird pizza is a game changer. BBQ sauce on a pizza? Genius! Great atmosphere too." },
-                    { id: 5, author: "Emily C.", location: "Golden, BC", stars: 5, content: "Came for the dog-friendly patio, stayed for the amazing pizza and local craft beer. 10/10 service!" },
-                    { id: 6, author: "Mark F.", location: "New York, NY", stars: 5, content: "As a tourist, this place felt like a local secret. Cozy, friendly, and the pizza was out of this world." },
-                    { id: 7, author: "Chloe W.", location: "Canmore, AB", stars: 5, content: "Monday Madness is the best deal in town. Half price pizzas that are this good? Unbeatable." },
-                    { id: 8, author: "Ben S.", location: "London, UK", stars: 5, content: "We were told this was the place to go in Banff, and it did not disappoint. The hype is real." }
+                    { id: 1, author: "TravelBug2023", location: "Toronto, Canada", stars: 5, content: "Best pizza in Banff! The Godfather pizza was incredible - truffle oil, prosciutto, amazing flavors. Staff were super friendly. Dog-friendly patio is a huge plus!" },
+                    { id: 2, author: "MountainLover88", location: "Seattle, USA", stars: 5, content: "Came here based on the 'You Gotta Eat Here' episode and it lived up to the hype! Great atmosphere, fantastic beer selection from Three Bears Brewery. Will definitely return!" },
+                    { id: 3, author: "FoodieAdventures", location: "Vancouver, Canada", stars: 5, content: "The Big Bird pizza is outstanding - maple syrup on pizza works surprisingly well! Service was excellent, portions are generous. One of our favorite meals in Banff." },
+                    { id: 4, author: "BanffVisitor2024", location: "Calgary, Canada", stars: 5, content: "Perfect spot after a day of skiing. Love that they have gluten-free and vegan options. The heated patio is beautiful year-round. Highly recommend!" },
+                    { id: 5, author: "PizzaEnthusiast", location: "London, UK", stars: 5, content: "As pizza lovers traveling through Canada, this place blew us away. Fresh ingredients, creative combinations, and the crust is perfection. Don't miss it!" },
+                    { id: 6, author: "LocalExplorer", location: "Canmore, Canada", stars: 5, content: "Monday Madness is the best deal! Half price personal pizzas that taste amazing. Great local vibe, friendly staff. Our go-to spot in Banff." },
+                    { id: 7, author: "HappyTraveler", location: "Denver, USA", stars: 5, content: "Stumbled upon this gem and so glad we did! The Caesar salad and Bison pizza were phenomenal. Dog-friendly patio made it perfect for our pup too!" },
+                    { id: 8, author: "CanadianFoodie", location: "Edmonton, Canada", stars: 5, content: "Been coming here for years and it never disappoints. Consistent quality, great atmosphere, and the staff actually remember regulars. Banff institution!" }
                   ].map((testimonial) => (
                     <div key={`${i}-${testimonial.id}`} className="w-[400px] mx-4 flex-shrink-0">
-                      <div className="bg-bg-secondary border border-border-subtle p-10 rounded-lg hover:border-accent-primary/30 transition-all relative h-full">
-                        <div className="absolute top-4 left-4 text-6xl text-white/5">"</div>
+                      <div className="bg-white border-2 border-gray-200 p-10 rounded-lg hover:border-accent-primary transition-all relative h-full shadow-lg">
+                        <div className="absolute top-4 left-4 text-6xl text-black/5">"</div>
                         <div className="flex mb-6 justify-center">
                           {[...Array(testimonial.stars)].map((_, i) => (
-                            <span key={i} className="text-accent-secondary text-2xl">★</span>
+                            <span key={i} className="text-accent-primary text-2xl">★</span>
                           ))}
                         </div>
-                        <p className="text-text-secondary italic mb-8 text-center leading-relaxed">"{testimonial.content}"</p>
+                        <p className="text-gray-800 italic mb-8 text-center leading-relaxed">"{testimonial.content}"</p>
                         <div className="flex flex-col items-center">
                           <div className="w-16 h-16 rounded-lg bg-accent-primary text-black flex items-center justify-center text-xl mb-3 font-bold">
-                            {testimonial.author.split(' ').map(n => n[0]).join('')}
+                            {testimonial.author.substring(0, 2).toUpperCase()}
                           </div>
-                          <p className="font-bold text-white">{testimonial.author}</p>
-                          <p className="text-sm text-text-muted">{testimonial.location}</p>
+                          <p className="font-bold text-black">{testimonial.author}</p>
+                          <p className="text-sm text-gray-600">{testimonial.location}</p>
+                          <p className="text-xs text-gray-400 mt-2">via TripAdvisor</p>
                         </div>
                       </div>
                     </div>

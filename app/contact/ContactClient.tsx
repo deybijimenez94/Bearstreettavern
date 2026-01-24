@@ -368,9 +368,9 @@ export default function ContactClient() {
         <div className={`text-center ${isVisible ? 'scroll-reveal' : ''}`}>
           <Link
             href="/"
-            className="inline-block bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all border-2 border-accent-primary rounded-lg"
+            className="inline-block bg-white text-black hover:bg-black hover:text-white border border-black hover:border-white px-6 py-2 font-bold text-xs tracking-[0.2em] transition-all"
           >
-            BACK TO HOME
+            ← BACK TO HOME
           </Link>
         </div>
       </div>

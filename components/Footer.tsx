@@ -50,7 +50,7 @@ export default function Footer() {
               </p>
               <form
                 onSubmit={handleNewsletterSubmit}
-                className="flex flex-col sm:flex-row gap-2 md:gap-3 max-w-lg mx-auto"
+                className="flex flex-col sm:flex-row gap-2 md:gap-3 max-w-md mx-auto"
               >
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email Address for Newsletter

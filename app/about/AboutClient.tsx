@@ -43,10 +43,10 @@ export default function AboutClient() {
             sizes="100vw"
             style={{ objectFit: 'cover' }}
             quality={100}
-            className="opacity-30"
+            className="opacity-50"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-bg-primary"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-bg-primary"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto scroll-reveal">
@@ -377,13 +377,13 @@ export default function AboutClient() {
       </section>
 
       {/* Back to Home */}
-      <section className="py-16 bg-bg-secondary">
+      <section className="py-12 bg-bg-secondary">
         <div className="text-center">
           <Link
             href="/"
-            className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all"
+            className="inline-block bg-white text-black hover:bg-black hover:text-white border border-black hover:border-white px-6 py-2 font-bold text-xs tracking-[0.2em] transition-all"
           >
-            {t('about.cta.backHome')}
+            ← {t('about.cta.backHome')}
           </Link>
         </div>
       </section>
