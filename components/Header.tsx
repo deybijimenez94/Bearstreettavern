@@ -98,7 +98,7 @@ export default function Header() {
 
   const navLinks = [
     { href: '/', label: 'header.home' },
-    { href: '/#menu', label: 'header.menu' },
+    { href: '/menu', label: 'header.menu' },
     { href: '/about', label: 'header.about' },
     { href: '/reservations', label: 'header.reservations' },
     { href: '/gallery', label: 'header.gallery' },
@@ -204,9 +204,9 @@ export default function Header() {
         ></div>
       )}
 
-      {/* Mobile Menu Overlay - Compact Right-Side Menu */}
+      {/* Mobile Menu Overlay - Top Dropdown Menu */}
       <div
-        className={`lg:hidden fixed inset-0 flex items-stretch justify-end pointer-events-none`}
+        className={`lg:hidden fixed inset-x-0 top-0 flex items-start justify-center pointer-events-none`}
         style={{
           zIndex: 9999
         }}
@@ -218,7 +218,7 @@ export default function Header() {
           aria-label="Mobile menu"
           ref={panelRef}
           tabIndex={-1}
-          className={`w-[85%] max-w-sm h-full bg-black border-l border-white/10 shadow-2xl relative overflow-hidden transform will-change-transform transition-transform duration-300 ease-out pointer-events-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`w-full max-h-[90vh] bg-black border-b border-white/10 shadow-2xl relative overflow-hidden transform will-change-transform transition-transform duration-300 ease-out pointer-events-auto ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
         >
         {/* Close Button */}
         <button
@@ -245,10 +245,10 @@ export default function Header() {
         </div>
 
         {/* Menu Content */}
-        <div className="relative z-10 h-full flex flex-col px-6 pt-20 pb-[max(2rem,env(safe-area-inset-bottom))] overflow-y-auto">
+        <div className="relative z-10 flex flex-col px-6 pt-20 pb-8 overflow-y-auto">
           {/* Logo at top */}
-          <div className="mb-8 text-center">
-            <div className="relative w-16 h-16 mx-auto mb-2">
+          <div className="mb-4 text-center">
+            <div className="relative w-12 h-12 mx-auto mb-1">
               <Image
                 src="/images/BST.jpg"
                 alt="Bear Street Tavern Logo"
@@ -256,26 +256,26 @@ export default function Header() {
                 objectFit="contain"
               />
             </div>
-            <div className="font-display text-xs tracking-[0.2em] text-white">
+            <div className="font-display text-[10px] tracking-[0.2em] text-white">
               BEAR STREET
             </div>
-            <div className="text-[10px] tracking-[0.3em] text-white/60">
+            <div className="text-[8px] tracking-[0.3em] text-white/60">
               TAVERN
             </div>
           </div>
 
           {/* Language Switcher */}
-          <div className="mb-6 flex justify-center">
+          <div className="mb-3 flex justify-center">
             <LanguageSwitcher />
           </div>
 
           {/* Navigation Links - Compact */}
-          <nav className="flex-1 flex flex-col space-y-1">
+          <nav className="flex-1 flex flex-col space-y-0">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:bg-white/10 hover:text-white px-4 py-3 text-sm tracking-wider font-medium transition-all border-b border-white/10"
+                className="text-white hover:bg-white/10 hover:text-white px-4 py-2.5 text-sm tracking-wider font-medium transition-all border-b border-white/10"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t(link.label)}
@@ -285,7 +285,7 @@ export default function Header() {
               href="https://www.banffcollective.com/banff-careers"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:bg-white/10 hover:text-white px-4 py-3 text-sm tracking-wider font-medium transition-all border-b border-white/10"
+              className="text-white hover:bg-white/10 hover:text-white px-4 py-2.5 text-sm tracking-wider font-medium transition-all border-b border-white/10"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Join Our Team
@@ -294,7 +294,7 @@ export default function Header() {
               href="https://bearsttavern.xdineapp.com/#giftshop/49/chooseCard"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:bg-white/10 hover:text-white px-4 py-3 text-sm tracking-wider font-medium transition-all border-b border-white/10"
+              className="text-white hover:bg-white/10 hover:text-white px-4 py-2.5 text-sm tracking-wider font-medium transition-all border-b border-white/10"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               GIFT CARD
@@ -302,7 +302,7 @@ export default function Header() {
           </nav>
 
           {/* Contact & CTA - Compact */}
-          <div className="pt-6 space-y-4 border-t border-white/10">
+          <div className="pt-4 space-y-3 border-t border-white/10">
             <a
               href="tel:4037622021"
               className="flex items-center text-white/80 hover:text-white text-sm tracking-wide transition-colors gap-2"
@@ -315,7 +315,7 @@ export default function Header() {
 
 
             {/* Social Links - Compact */}
-            <div className="flex gap-3 justify-center pt-4">
+            <div className="flex gap-3 justify-center pt-2">
               <a
                 href="https://instagram.com/bearstreettavern"
                 target="_blank"
