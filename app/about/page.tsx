@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://bearstreettavern.ca/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg',
+        url: '/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg',
         width: 1200,
         height: 630,
         alt: 'Bear Street Tavern Interior - About',

@@ -14,14 +14,39 @@ export default function Footer() {
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setMessage('');
 
-    // Simulate newsletter signup
-    setTimeout(() => {
-      setMessage(t('footer.subscribed'));
-      setEmail('');
+    try {
+      const formData = new FormData();
+      formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
+      formData.append('email', email);
+      formData.append('subject', 'New Newsletter Subscription - Bear Street Tavern');
+      formData.append('from_name', 'Bear Street Tavern Website');
+      formData.append('to_email', process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@bearstreettavern.ca');
+      formData.append('message', `New newsletter subscription from: ${email}`);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setMessage(t('footer.subscribed'));
+        setEmail('');
+        setTimeout(() => setMessage(''), 5000);
+      } else {
+        setMessage('Something went wrong. Please try again.');
+        setTimeout(() => setMessage(''), 5000);
+      }
+    } catch (error) {
+      console.error('Newsletter submission error:', error);
+      setMessage('Something went wrong. Please try again.');
+      setTimeout(() => setMessage(''), 5000);
+    } finally {
       setIsSubmitting(false);
-      setTimeout(() => setMessage(''), 3000);
-    }, 1000);
+    }
   };
 
   return (
@@ -32,7 +57,7 @@ export default function Footer() {
           alt="Footer background"
           layout="fill"
           objectFit="cover"
-          quality={100}
+          quality={80}
           className="opacity-10"
         />
         <div className="absolute inset-0 bg-black/70"></div>

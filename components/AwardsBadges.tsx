@@ -86,7 +86,7 @@ export default function AwardsBadges() {
             <div className="flex w-max animate-marquee-slow">
               {[...Array(3)].map((_, duplicateIndex) => (
                 awards.map((award, awardIndex) => (
-                  <div key={`${duplicateIndex}-${awardIndex}`} className="w-[280px] mx-4 flex-shrink-0">
+                  <div key={`${duplicateIndex}-${awardIndex}`} className="w-[280px] mx-4 shrink-0">
                     <div className="flex flex-col items-center text-center group">
                       <div className={`relative w-20 h-20 bg-gradient-to-br ${award.gradient} backdrop-blur-sm border ${award.border} rounded-full flex items-center justify-center shadow-lg ${award.shadow} transition-all mb-4`}>
                         {award.icon}
@@ -104,25 +104,25 @@ export default function AwardsBadges() {
 
           {/* Additional Trust Signals */}
           <div className="mt-12 pt-8 border-t border-white/10">
-            <div className="flex flex-wrap justify-center items-center gap-6 text-center">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <div className="flex flex-col md:flex-row flex-wrap md:justify-center items-start md:items-center gap-4 md:gap-6 px-4 md:px-0">
+              <div className="flex items-center gap-2.5">
+                <svg className="w-5 h-5 shrink-0 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-sm font-semibold text-text-secondary">
                   Banff Hospitality Collective
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <div className="flex items-center gap-2.5">
+                <svg className="w-5 h-5 shrink-0 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-sm font-semibold text-text-secondary">
                   Three Bears Brewery Partner
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <div className="flex items-center gap-2.5">
+                <svg className="w-5 h-5 shrink-0 text-accent-secondary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-sm font-semibold text-text-secondary">

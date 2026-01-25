@@ -20,14 +20,41 @@ export default function ContactClient() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitMessage('');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitMessage("MESSAGE SENT SUCCESSFULLY! We'll get back to you soon.");
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    try {
+      const formPayload = new FormData();
+      formPayload.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
+      formPayload.append('name', formData.name);
+      formPayload.append('email', formData.email);
+      formPayload.append('phone', formData.phone);
+      formPayload.append('subject', `Contact Form: ${formData.subject}`);
+      formPayload.append('message', formData.message);
+      formPayload.append('from_name', formData.name);
+      formPayload.append('to_email', process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@bearstreettavern.ca');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formPayload
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitMessage("MESSAGE SENT SUCCESSFULLY! We'll get back to you soon.");
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setTimeout(() => setSubmitMessage(''), 7000);
+      } else {
+        setSubmitMessage('Something went wrong. Please try again or contact us directly.');
+        setTimeout(() => setSubmitMessage(''), 7000);
+      }
+    } catch (error) {
+      console.error('Contact form submission error:', error);
+      setSubmitMessage('Something went wrong. Please try again or contact us directly.');
+      setTimeout(() => setSubmitMessage(''), 7000);
+    } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1500);
+    }
   };
 
   const handleChange = (

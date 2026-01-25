@@ -469,7 +469,7 @@ export default function Home() {
                         alt={image.alt}
                         fill
                         sizes="300px"
-                        quality={75}
+                        quality={80}
                         loading="lazy"
                         style={{ objectFit: 'cover' }}
                         className="group-hover:scale-125 transition-transform duration-500"

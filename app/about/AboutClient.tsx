@@ -42,7 +42,7 @@ export default function AboutClient() {
             fill
             sizes="100vw"
             style={{ objectFit: 'cover' }}
-            quality={100}
+            quality={85}
             className="opacity-50"
             priority
           />
