@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Bear Street Tavern",
     images: [
       {
-        url: '/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg',
+        url: 'https://bearstreettavern.ca/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg',
         width: 1200,
         height: 630,
         alt: "Bear Street Tavern - Banff's Best Pizza with Mountain Views",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Bear Street Tavern | Banff's Best Pizza",
     description: "Award-winning pizza featured on 'You Gotta Eat Here'. Dog-friendly heated patio, craft beers, GF & vegan options.",
-    images: ['/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg'],
+    images: ['https://bearstreettavern.ca/images/2019_BearStreetTavern_ScenicDining_PaulZizka.jpg'],
   },
   robots: {
     index: true,
