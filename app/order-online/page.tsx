@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function OrderOnlinePage() {
+  const { t } = useLanguage();
   return (
     <main id="main-content" className="min-h-screen bg-bg-primary pt-24">
       <div className="container mx-auto px-4 lg:px-8 py-16">
@@ -11,14 +13,14 @@ export default function OrderOnlinePage() {
         <AnimatedSection animationType="fade-up">
           <div className="text-center mb-16">
             <div className="inline-block px-6 py-2 bg-black border border-white/20 text-white text-xs tracking-[0.3em] mb-6 font-bold">
-              QUICK & EASY
+              {t('orderOnline.hero.subtitle')}
             </div>
             <h1 className="font-display text-6xl md:text-8xl tracking-tight mb-6 font-black text-white">
-              ORDER ONLINE
+              {t('orderOnline.hero.title')}
             </h1>
             <div className="w-32 h-1 bg-accent-primary mx-auto mb-6"></div>
             <p className="text-text-secondary text-xl tracking-wide font-medium max-w-2xl mx-auto">
-              Skip the wait. Order ahead and pick up your favorites!
+              {t('orderOnline.hero.text')}
             </p>
           </div>
         </AnimatedSection>
@@ -27,7 +29,7 @@ export default function OrderOnlinePage() {
         <AnimatedSection animationType="fade-up" delay={1}>
           <div className="max-w-5xl mx-auto mb-16">
             <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-12 font-black text-center text-white">
-              HOW IT WORKS
+              {t('orderOnline.how.title')}
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {/* Step 1 */}
@@ -36,10 +38,10 @@ export default function OrderOnlinePage() {
                   <span className="font-display text-4xl font-black">1</span>
                 </div>
                 <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-white">
-                  CHOOSE YOUR FOOD
+                  {t('orderOnline.step1.title')}
                 </h3>
                 <p className="text-text-secondary">
-                  Browse our full menu of pizzas, appetizers, salads, and drinks. Customize to your preference.
+                  {t('orderOnline.step1.text')}
                 </p>
               </div>
 
@@ -49,10 +51,10 @@ export default function OrderOnlinePage() {
                   <span className="font-display text-4xl font-black">2</span>
                 </div>
                 <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-white">
-                  PLACE YOUR ORDER
+                  {t('orderOnline.step2.title')}
                 </h3>
                 <p className="text-text-secondary">
-                  Select your pickup time and pay securely online. We'll start preparing your order.
+                  {t('orderOnline.step2.text')}
                 </p>
               </div>
 
@@ -62,10 +64,10 @@ export default function OrderOnlinePage() {
                   <span className="font-display text-4xl font-black">3</span>
                 </div>
                 <h3 className="font-display text-2xl tracking-tight mb-3 font-bold text-white">
-                  PICK UP & ENJOY
+                  {t('orderOnline.step3.title')}
                 </h3>
                 <p className="text-text-secondary">
-                  Come to the restaurant at your selected time. Your order will be ready and waiting!
+                  {t('orderOnline.step3.text')}
                 </p>
               </div>
             </div>
@@ -76,11 +78,11 @@ export default function OrderOnlinePage() {
         <AnimatedSection animationType="fade-up" delay={2}>
           <div className="max-w-4xl mx-auto mb-16 bg-black border border-white/20 text-white p-12 rounded-lg text-center">
             <h2 className="font-display text-4xl md:text-5xl tracking-tight mb-6 font-black">
-              READY TO ORDER?
+              {t('orderOnline.ready.title')}
             </h2>
             <div className="w-24 h-1 bg-accent-primary mx-auto mb-8"></div>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Place your order now through our online ordering system. All your favorites, just a few clicks away.
+              {t('orderOnline.ready.text')}
             </p>
             <a
               href="https://bearsttavern.xdineapp.com/#home"
@@ -88,10 +90,10 @@ export default function OrderOnlinePage() {
               rel="noopener noreferrer"
               className="inline-block bg-accent-primary text-black hover:bg-accent-secondary px-12 py-4 font-bold text-sm tracking-[0.3em] transition-all border border-accent-primary hover:scale-105"
             >
-              START YOUR ORDER
+              {t('orderOnline.ready.button')}
             </a>
             <p className="text-white/60 text-sm mt-6">
-              Secure payment • Choose pickup time • Real-time updates
+              {t('orderOnline.good.payment')} • {t('orderOnline.good.pickup')}
             </p>
           </div>
         </AnimatedSection>
@@ -100,7 +102,7 @@ export default function OrderOnlinePage() {
         <AnimatedSection animationType="fade-up" delay={3}>
           <div className="max-w-6xl mx-auto mb-16">
             <h2 className="font-display text-3xl md:text-4xl tracking-tight mb-12 font-black text-center text-white">
-              POPULAR FAVORITES
+              {t('orderOnline.popular.title')}
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {/* Pizza */}
@@ -203,7 +205,7 @@ export default function OrderOnlinePage() {
         <AnimatedSection animationType="fade-up">
           <div className="max-w-4xl mx-auto mb-16 bg-bg-secondary border border-white/10 p-10 rounded-lg">
             <h2 className="font-display text-2xl md:text-3xl tracking-tight mb-6 font-bold text-center text-white">
-              GOOD TO KNOW
+              {t('orderOnline.good.title')}
             </h2>
             <div className="space-y-3 max-w-2xl mx-auto">
               <div className="flex items-start">
@@ -252,7 +254,7 @@ export default function OrderOnlinePage() {
               href="/"
               className="inline-block bg-white text-black hover:bg-black hover:text-white border border-black hover:border-white px-6 py-2 font-bold text-xs tracking-[0.2em] transition-all"
             >
-              ← BACK TO HOME
+              {t('orderOnline.cta.back')}
             </Link>
           </div>
         </AnimatedSection>

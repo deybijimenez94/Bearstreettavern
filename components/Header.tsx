@@ -161,7 +161,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="text-white/70 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
             >
-              Join Our Team
+              {t('common.joinTeam')}
             </a>
             <a
               href="https://bearsttavern.xdineapp.com/#giftshop/49/chooseCard"
@@ -169,7 +169,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="text-white/70 hover:text-white px-4 py-2 text-sm tracking-wider font-medium transition-all hover:bg-white/5 rounded"
             >
-              GIFT CARD
+              {t('common.giftCard')}
             </a>
           </div>
 
@@ -288,7 +288,7 @@ export default function Header() {
               className="text-white hover:bg-white/10 hover:text-white px-4 py-2.5 text-sm tracking-wider font-medium transition-all border-b border-white/10"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Join Our Team
+              {t('common.joinTeam')}
             </a>
             <a
               href="https://bearsttavern.xdineapp.com/#giftshop/49/chooseCard"
@@ -297,7 +297,7 @@ export default function Header() {
               className="text-white hover:bg-white/10 hover:text-white px-4 py-2.5 text-sm tracking-wider font-medium transition-all border-b border-white/10"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              GIFT CARD
+              {t('common.giftCard')}
             </a>
           </nav>
 

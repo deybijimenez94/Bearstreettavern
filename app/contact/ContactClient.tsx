@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactClient() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,16 +42,15 @@ export default function ContactClient() {
       const data = await response.json();
 
       if (data.success) {
-        setSubmitMessage("MESSAGE SENT SUCCESSFULLY! We'll get back to you soon.");
+        setSubmitMessage(t('contact.form.success'));
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setTimeout(() => setSubmitMessage(''), 7000);
       } else {
-        setSubmitMessage('Something went wrong. Please try again or contact us directly.');
+        setSubmitMessage(t('error.contact'));
         setTimeout(() => setSubmitMessage(''), 7000);
       }
     } catch (error) {
-      console.error('Contact form submission error:', error);
-      setSubmitMessage('Something went wrong. Please try again or contact us directly.');
+      setSubmitMessage(t('error.contact'));
       setTimeout(() => setSubmitMessage(''), 7000);
     } finally {
       setIsSubmitting(false);
@@ -93,14 +93,14 @@ export default function ContactClient() {
         {/* Header */}
         <div className={`text-center mb-12 ${isVisible ? 'scroll-reveal' : ''}`}>
           <div className="inline-block px-6 py-2 bg-accent-primary text-white text-xs tracking-[0.3em] mb-6 font-bold rounded-lg">
-            GET IN TOUCH
+            {t('contact.hero.tag')}
           </div>
           <h1 className="font-display text-4xl md:text-6xl tracking-tight mb-6 font-black text-white">
-            CONTACT US
+            {t('contact.hero.title')}
           </h1>
           <div className="w-32 h-1 bg-accent-primary mx-auto mb-6"></div>
           <p className="text-text-secondary text-base md:text-lg tracking-wide font-medium max-w-2xl mx-auto">
-            We'd love to hear from you! Reach out with any questions or feedback.
+            {t('contact.hero.subtitle')}
           </p>
         </div>
 
@@ -114,11 +114,11 @@ export default function ContactClient() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
-              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">PHONE</h3>
+              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">{t('contact.info.phone')}</h3>
               <a href="tel:4037622021" className="text-accent-primary text-xl font-bold hover:text-accent-secondary transition-colors">
-                403.762.2021
+                {t('contact.info.phoneNumber')}
               </a>
-              <p className="text-text-muted text-sm mt-2">Mon-Sun: 11:30 AM - 9PM</p>
+              <p className="text-text-muted text-sm mt-2">{t('contact.info.hoursValue')}</p>
             </div>
 
             {/* Email */}
@@ -128,9 +128,9 @@ export default function ContactClient() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">EMAIL</h3>
+              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">{t('contact.info.email')}</h3>
               <a href="mailto:info@bearstreettavern.ca" className="text-accent-primary text-base font-bold hover:text-accent-secondary transition-colors break-all">
-                INFO@BEARSTREETTAVERN.CA
+                {t('contact.info.emailAddress')}
               </a>
               <p className="text-text-muted text-sm mt-2">We reply within 24 hours</p>
             </div>
@@ -143,10 +143,10 @@ export default function ContactClient() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">LOCATION</h3>
-              <p className="text-white font-bold mb-1">211 Bear Street</p>
-              <p className="text-text-secondary">Banff, AB T1L 1A1</p>
-              <p className="text-text-secondary">Canada</p>
+              <h3 className="font-display text-lg tracking-wider mb-3 font-bold text-white">{t('contact.info.location')}</h3>
+              <p className="text-white font-bold mb-1">{t('contact.info.address1')}</p>
+              <p className="text-text-secondary">{t('contact.info.address2')}</p>
+              <p className="text-text-secondary">{t('contact.info.address3')}</p>
             </div>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function ContactClient() {
             {/* Contact Form */}
             <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
               <h2 className="font-display text-2xl tracking-tight mb-6 font-black text-white">
-                SEND US A MESSAGE
+                {t('contact.form.title')}
               </h2>
               <div className="w-16 h-1 bg-accent-primary mb-6"></div>
               <p className="text-text-secondary mb-8">
@@ -167,7 +167,7 @@ export default function ContactClient() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-bold text-white mb-2 tracking-wide">
-                    YOUR NAME *
+                    {t('contact.form.name')} *
                   </label>
                   <input
                     type="text"
@@ -184,7 +184,7 @@ export default function ContactClient() {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-bold text-white mb-2 tracking-wide">
-                    EMAIL ADDRESS *
+                    {t('contact.form.email')} *
                   </label>
                   <input
                     type="email"
@@ -201,7 +201,7 @@ export default function ContactClient() {
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-bold text-white mb-2 tracking-wide">
-                    PHONE NUMBER
+                    {t('contact.form.phone')}
                   </label>
                   <input
                     type="tel"
@@ -216,7 +216,7 @@ export default function ContactClient() {
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-bold text-white mb-2 tracking-wide">
-                    SUBJECT *
+                    {t('contact.form.subject')} *
                   </label>
                   <select
                     id="subject"
@@ -238,7 +238,7 @@ export default function ContactClient() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-bold text-white mb-2 tracking-wide">
-                    YOUR MESSAGE *
+                    {t('contact.form.message')} *
                   </label>
                   <textarea
                     id="message"
@@ -259,7 +259,7 @@ export default function ContactClient() {
                   aria-label={isSubmitting ? "Sending message, please wait" : "Send message"}
                   className="w-full bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all border-2 border-accent-primary disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-lg"
                 >
-                  {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+                  {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
                 </button>
 
                 {submitMessage && (
@@ -288,10 +288,10 @@ export default function ContactClient() {
               {/* Google Map */}
               <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
                 <h3 className="font-display text-xl tracking-wider mb-4 font-bold text-white">
-                  FIND US HERE
+                  {t('contact.map.title')}
                 </h3>
                 <p className="text-text-secondary mb-4">
-                  Located in the heart of downtown Banff, we're easy to find on Bear Street, just steps from all the main attractions.
+                  {t('contact.map.text')}
                 </p>
                 <p className="text-text-secondary mb-4">
                   Scroll down for full map and directions.
@@ -303,7 +303,7 @@ export default function ContactClient() {
                     rel="noopener noreferrer"
                     className="inline-block bg-accent-primary text-black hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-[0.3em] transition-all rounded-lg"
                   >
-                    GET DIRECTIONS
+                    {t('contact.map.directions')}
                   </a>
                 </div>
                 <div className="relative h-64 md:h-80 w-full rounded-lg overflow-hidden border border-border-subtle">
@@ -322,11 +322,11 @@ export default function ContactClient() {
 
               {/* Hours */}
               <div className="bg-bg-secondary text-white p-6 rounded-[3rem] border border-border-subtle">
-                <h3 className="font-display text-xl tracking-wider mb-6 font-bold">HOURS OF OPERATION</h3>
+                <h3 className="font-display text-xl tracking-wider mb-6 font-bold">{t('contact.info.hours')}</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-border-subtle pb-4">
                     <span className="font-bold tracking-wider">MONDAY - SUNDAY</span>
-                    <span className="text-text-secondary">11:30 AM - 9:00 PM</span>
+                    <span className="text-text-secondary">{t('contact.info.hoursValue')}</span>
                   </div>
                   <div className="bg-accent-primary/10 border border-accent-primary/30 p-4 rounded-[2rem]">
                     <p className="text-sm text-text-secondary">
@@ -343,15 +343,15 @@ export default function ContactClient() {
                 <div className="space-y-3">
                   <Link href="/reservations" className="flex items-center text-white hover:text-accent-primary transition-colors group">
                     <span className="mr-3 text-accent-primary">→</span>
-                    <span className="font-bold tracking-wide">Make a Reservation</span>
+                    <span className="font-bold tracking-wide">{t('footer.reservations')}</span>
                   </Link>
                   <Link href="/order-online" className="flex items-center text-white hover:text-accent-primary transition-colors group">
                     <span className="mr-3 text-accent-primary">→</span>
-                    <span className="font-bold tracking-wide">Order Online</span>
+                    <span className="font-bold tracking-wide">{t('footer.orderOnline')}</span>
                   </Link>
                   <Link href="/menu" className="flex items-center text-white hover:text-accent-primary transition-colors group">
                     <span className="mr-3 text-accent-primary">→</span>
-                    <span className="font-bold tracking-wide">View Menu</span>
+                    <span className="font-bold tracking-wide">{t('footer.menuLink')}</span>
                   </Link>
                   <a
                     href="https://banffcollective.com/careers"
@@ -367,7 +367,7 @@ export default function ContactClient() {
 
               {/* Social Media */}
               <div className="bg-black border border-border-subtle p-6 rounded-[3rem]">
-                <h3 className="font-display text-xl tracking-wider mb-6 font-bold text-white">FOLLOW US</h3>
+                <h3 className="font-display text-xl tracking-wider mb-6 font-bold text-white">{t('footer.followUs')}</h3>
                 <div className="flex space-x-4">
                   <a
                     href="https://instagram.com/bearstreettavern"
@@ -397,7 +397,7 @@ export default function ContactClient() {
             href="/"
             className="inline-block bg-white text-black hover:bg-black hover:text-white border border-black hover:border-white px-6 py-2 font-bold text-xs tracking-[0.2em] transition-all"
           >
-            ← BACK TO HOME
+            ← {t('contact.backHome')}
           </Link>
         </div>
       </div>

@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ReservationsClient() {
+  const { t } = useLanguage();
   const [showModal, setShowModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -75,13 +77,13 @@ export default function ReservationsClient() {
                 {/* Content */}
                 <div className="flex-grow text-center md:text-left">
                   <h2 id="reservation-modal-title" className="font-display text-xl md:text-3xl tracking-tight mb-3 font-black text-white">
-                    ⚠️ RESERVATIONS STRONGLY RECOMMENDED
+                    {t('reservations.notice.title')}
                   </h2>
                   <p className="text-text-secondary text-sm md:text-lg leading-relaxed mb-4">
-                    <strong className="text-accent-primary">We're a popular spot!</strong> Walk-in wait times can exceed <span className="font-bold text-red-500">2+ hours</span> during peak season (June-September) and weekends.
-                    <span className="block mt-2">
-                      Book ahead to guarantee your table and skip the wait.
-                    </span>
+                    {t('reservations.notice.text1')}
+                  </p>
+                  <p className="text-text-secondary text-sm md:text-lg leading-relaxed mb-4">
+                    {t('reservations.notice.text2')}
                   </p>
                   <p className="text-sm text-text-muted mt-2">
                     <strong className="text-accent-primary">💡 Reserve ahead:</strong> Use the OpenTable button below or call us at{' '}
@@ -119,7 +121,7 @@ export default function ReservationsClient() {
                   onClick={() => setShowModal(false)}
                   className="bg-accent-primary text-white hover:bg-accent-secondary px-8 py-3 font-bold text-sm tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-lg"
                 >
-                  GOT IT, SHOW ME RESERVATIONS
+                  {t('reservations.notice.button')}
                 </button>
               </div>
             </div>
@@ -133,14 +135,14 @@ export default function ReservationsClient() {
           {/* Header */}
           <div className={`text-center mb-12 ${isVisible ? 'scroll-reveal' : ''}`}>
             <div className="inline-block px-6 py-2 bg-accent-primary text-white text-xs tracking-[0.3em] mb-6 font-bold rounded-lg">
-              SECURE YOUR TABLE
+              {t('reservations.hero.tag')}
             </div>
             <h1 className="font-display text-3xl md:text-6xl tracking-tight mb-6 font-black text-white">
-              RESERVATIONS
+              {t('reservations.hero.title')}
             </h1>
             <div className="w-32 h-1 bg-accent-primary mx-auto mb-6"></div>
             <p className="text-text-secondary text-sm md:text-lg tracking-wide font-medium max-w-2xl mx-auto px-4">
-              Book Your Table at Banff's Best Pizza
+              {t('reservations.hero.text')}
             </p>
           </div>
 
@@ -148,7 +150,7 @@ export default function ReservationsClient() {
             {/* OpenTable Integration */}
             <section className={`bg-bg-secondary text-white p-4 md:p-10 rounded-[3rem] text-center border border-border-subtle ${isVisible ? 'scroll-reveal scroll-reveal-delay-1' : ''}`}>
               <h2 className="font-display text-xl md:text-3xl tracking-tight mb-4 md:mb-6 font-black">
-                BOOK ONLINE NOW
+                {t('reservations.hero.subtitle')}
               </h2>
               <div className="w-24 h-1 bg-accent-primary mx-auto mb-6 md:mb-8"></div>
               <p className="text-text-secondary mb-6 md:mb-8 text-sm md:text-lg">
@@ -160,7 +162,7 @@ export default function ReservationsClient() {
                 rel="noopener noreferrer"
                 className="inline-block bg-accent-primary text-white hover:bg-accent-secondary px-6 md:px-10 py-3 md:py-4 font-bold text-xs md:text-sm tracking-wider md:tracking-[0.3em] transition-all border-2 border-accent-primary hover:scale-105 rounded-lg"
               >
-                RESERVE ON OPENTABLE
+                {t('reservations.cta.button')}
               </a>
               <p className="text-text-muted text-xs md:text-sm mt-4 md:mt-6">
                 Instant confirmation • Easy to modify • No fees
@@ -170,11 +172,11 @@ export default function ReservationsClient() {
             {/* Contact Information */}
             <section className={`bg-black border border-border-subtle p-4 md:p-8 rounded-[3rem] ${isVisible ? 'scroll-reveal scroll-reveal-delay-2' : ''}`}>
               <h2 className="font-display text-lg md:text-2xl tracking-tight mb-6 font-bold text-center text-white">
-                PREFER TO CALL?
+                {t('reservations.contact.title')}
               </h2>
               <div className="text-center space-y-4">
                 <div>
-                  <p className="text-text-muted text-sm mb-2">Phone</p>
+                  <p className="text-text-muted text-sm mb-2">{t('reservations.contact.phone')}</p>
                   <a
                     href="tel:4037622021"
                     className="text-xl font-bold text-white hover:text-text-secondary transition-colors tracking-wide"
@@ -197,6 +199,9 @@ export default function ReservationsClient() {
                   <p className="text-white font-medium">Banff, AB T1L 1A1</p>
                 </div>
               </div>
+              <p className="text-text-muted text-xs md:text-sm mt-6 text-center">
+                {t('reservations.contact.text')}
+              </p>
             </section>
 
             {/* Daily Specials */}
@@ -281,25 +286,23 @@ export default function ReservationsClient() {
             {/* Important Information */}
             <section className={`bg-bg-secondary text-white p-4 md:p-8 rounded-[3rem] border border-border-subtle ${isVisible ? 'scroll-reveal scroll-reveal-delay-4' : ''}`}>
               <h2 className="font-display text-lg md:text-2xl tracking-tight mb-6 font-bold text-center">
-                IMPORTANT INFORMATION
+                {t('reservations.info.title')}
               </h2>
               <div className="space-y-4 max-w-2xl mx-auto">
                 <div className="border-l-4 border-accent-primary/50 pl-4 md:pl-6">
-                  <h3 className="font-bold mb-2 text-sm">Group Size Policy</h3>
+                  <h3 className="font-bold mb-2 text-sm">
+                    {t('reservations.info.recommended')}
+                  </h3>
                   <p className="text-text-secondary text-xs md:text-sm">
-                    We do not accept large group events of 17 or more guests. For group bookings, please contact other Banff Hospitality Collective venues.
+                    {t('reservations.info.walkins')}
                   </p>
                 </div>
                 <div className="border-l-4 border-accent-primary/50 pl-4 md:pl-6">
-                  <h3 className="font-bold mb-2 text-sm">Dog-Friendly Patio</h3>
+                  <h3 className="font-bold mb-2 text-sm">
+                    {t('reservations.info.large')}
+                  </h3>
                   <p className="text-text-secondary text-xs md:text-sm">
-                    Our year-round heated patio with fire tables welcomes your furry friends! We offer a special canine menu and dog-friendly beer. Please note: the patio is not enclosed and is subject to the elements.
-                  </p>
-                </div>
-                <div className="border-l-4 border-accent-primary/50 pl-4 md:pl-6">
-                  <h3 className="font-bold mb-2 text-sm">Special Event Policies</h3>
-                  <p className="text-text-secondary text-xs md:text-sm">
-                    Daily specials exclude holidays and extended weekends. Selected pizzas and calzones only.
+                    {t('reservations.info.cancellation')}
                   </p>
                 </div>
               </div>
@@ -311,7 +314,7 @@ export default function ReservationsClient() {
                 href="/"
                 className="inline-block bg-white text-black hover:bg-black hover:text-white border border-black hover:border-white px-6 py-2 font-bold text-xs tracking-[0.2em] transition-all"
               >
-                ← BACK TO HOME
+                {t('reservations.backHome')}
               </Link>
             </div>
           </div>

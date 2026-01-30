@@ -37,12 +37,11 @@ export default function Footer() {
         setEmail('');
         setTimeout(() => setMessage(''), 5000);
       } else {
-        setMessage('Something went wrong. Please try again.');
+        setMessage(t('error.newsletter'));
         setTimeout(() => setMessage(''), 5000);
       }
     } catch (error) {
-      console.error('Newsletter submission error:', error);
-      setMessage('Something went wrong. Please try again.');
+      setMessage(t('error.newsletter'));
       setTimeout(() => setMessage(''), 5000);
     } finally {
       setIsSubmitting(false);
